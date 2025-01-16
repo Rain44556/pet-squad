@@ -1,6 +1,9 @@
 import { ModeToggle } from '@/common/ModeToggle';
+import { Button } from '@/components/ui/button';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
-import React from 'react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { MenuIcon } from 'lucide-react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
@@ -10,13 +13,17 @@ const Navbar = () => {
         <NavLink className="px-4" to="/">Donation Campaigns</NavLink>
         <NavLink className="px-4" to="/">Login</NavLink>
     </>
+    const [open, setOpen] = useState(false);
     return (
-        <div className='w-full border-b'>
-            <div className='flex gap-10 my-10 items-center px-4 justify-between'>
+        <div className='w-full border-b mt-4'>
+            <div className='flex gap-10 items-center px-24 justify-between'>
 
 
                 <div className='nav-start'>
-                    <h1>logo</h1>
+                    <img 
+                    src="https://i.ibb.co.com/WFjYQYS/Untitled-design.png" 
+                    alt="logo"
+                    className='w-24 h-24 rounded-full mb-2' />
                 </div>
 
                 <NavigationMenu className="hidden md:flex">
@@ -30,9 +37,25 @@ const Navbar = () => {
 
                 <div className='nav-end pt-3'>
                     <ModeToggle></ModeToggle>
+
+                        {/* for mobile responsive */}
+                        <Sheet open={open} onOpenChange={setOpen}>
+                            <SheetTrigger asChild>
+                                <Button variant="ghost" size="icon" className="md:hidden">
+                                    <MenuIcon />
+                                </Button>
+                            </SheetTrigger>
+
+                            <SheetContent side="left">
+                                <div className="flex flex-col items-start">
+                                    {navMenuLinks}
+                                </div>
+                            </SheetContent>
+                        </Sheet>
+                    </div>
                 </div>
             </div>
-        </div>
+
     );
 };
 

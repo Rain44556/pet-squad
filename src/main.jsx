@@ -8,7 +8,9 @@ import { router } from './routes/router'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-    <div className='max-w-screen-xl mx-auto'>
+    <div 
+    // className='max-w-screen-xl mx-auto'
+    >
     <RouterProvider router={router} />
     </div>
     </ThemeProvider>
