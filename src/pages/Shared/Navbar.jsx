@@ -16,7 +16,7 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     return (
         <div className='w-full border-b mt-4'>
-            <div className='flex gap-10 items-center px-24 justify-between'>
+            <div className='flex gap-10 items-center lg:px-24 px-8 justify-between'>
 
 
                 <div className='nav-start'>
