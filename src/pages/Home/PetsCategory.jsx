@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
 
 const petData = [
     {
@@ -154,7 +155,10 @@ const petData = [
 const PetsCategory = () => {
   return (
     <div className="p-8">
-      <h2 className="text-center text-2xl font-bold mb-6 font-headingFont">Find Out Which Furry Friend Fits You Best!</h2>
+        <SectionTitle
+        subTitle={"Category"}
+        title={"Find Out Which Furry Friend Fits You Best!"}
+      ></SectionTitle>
       <Swiper
         modules={[Navigation, Pagination]}
         navigation

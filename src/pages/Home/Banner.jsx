@@ -30,7 +30,7 @@ const Banner = () => {
             </motion.div>
 
             <motion.div
-                className='hidden lg:block w-40 h-40 absolute right-20 bottom-36'
+                className='hidden lg:block w-40 h-40 absolute right-5 bottom-28'
                 // initial={{ x: 100, opacity: 0 }}
                 whileHover={{scale: 1.1}}
                 animate={{ y: [0, -10, 0] }}
@@ -43,7 +43,7 @@ const Banner = () => {
             </motion.div>
 
             <motion.div
-                className='hidden lg:block w-40 h-40 absolute right-48 bottom-60 '
+                className='hidden lg:block w-40 h-40 absolute right-24 bottom-60 '
                 // initial={{ y: 100, opacity: 0 }}
                 whileHover={{scale: 1.1}}
                 animate={{ y: [0, -10, 0] }}
