@@ -9,9 +9,9 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
     const navMenuLinks = <>
         <NavLink className="px-4" to="/">Home</NavLink>
-        <NavLink className="px-4" to="/">Pet Listing</NavLink>
-        <NavLink className="px-4" to="/">Donation Campaigns</NavLink>
-        <NavLink className="px-4" to="/">Login</NavLink>
+        <NavLink className="px-4" to="/peListing">Pet Listing</NavLink>
+        <NavLink className="px-4" to="/donationCampaigns">Donation Campaigns</NavLink>
+        <NavLink className="px-4" to="/login">Login</NavLink>
     </>
     const [open, setOpen] = useState(false);
     return (

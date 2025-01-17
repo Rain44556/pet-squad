@@ -9,7 +9,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
     <div 
-    // className='max-w-screen-xl mx-auto'
+    // className='max-w-screen-7xl mx-auto'
     >
     <RouterProvider router={router} />
     </div>
