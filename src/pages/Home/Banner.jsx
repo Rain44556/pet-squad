@@ -17,9 +17,9 @@ const Banner = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1.6 }}
             >
-                <h1 className='md:text-5xl text-3xl font-extrabold leading-tight'>Welcome Home to
+                <h1 className='lg:text-5xl text-3xl font-extrabold leading-tight pt-8'>Welcome Home to
                     <span className='text-yellow-300 flex gap-2 justify-center lg:text-4xl'>  Pet Squad <MdPets className='text-purple-200'/></span></h1>
-                <p className='md:text-lg text-sm text-gray-200 lg:py-6 py-4'>Join us in our dedicated efforts to find loving homes for every pet in need. Adoption is not just a choice; it's the essential first step toward providing a brighter and happier future for our furry friends, ensuring they receive the love and care they deserve.</p>
+                <p className='text-lg  text-gray-200 py-6'>Join us in our dedicated efforts to find loving homes for every pet in need. Adoption is not just a choice; it's the essential first step toward providing a brighter and happier future for our furry friends, ensuring they receive the love and care they deserve.</p>
                 <motion.button
                     className='px-8 py-2 bg-yellow-300 text-gray-800 font-semibold rounded-full shadow-lg'
                     whileHover={{ scale: 1.1 }}
@@ -30,7 +30,7 @@ const Banner = () => {
             </motion.div>
 
             <motion.div
-                className='md:w-40 md:h-40 absolute md:right-20 md:bottom-36 bottom-32 right-0 w-24 h-24'
+                className='hidden lg:block w-40 h-40 absolute right-20 bottom-36'
                 // initial={{ x: 100, opacity: 0 }}
                 whileHover={{scale: 1.1}}
                 animate={{ y: [0, -10, 0] }}
@@ -43,7 +43,7 @@ const Banner = () => {
             </motion.div>
 
             <motion.div
-                className='md:w-40 md:h-40 absolute md:right-48 md:bottom-60 w-24 h-24 right-20 bottom-20'
+                className='hidden lg:block w-40 h-40 absolute right-48 bottom-60 '
                 // initial={{ y: 100, opacity: 0 }}
                 whileHover={{scale: 1.1}}
                 animate={{ y: [0, -10, 0] }}

@@ -35,7 +35,7 @@ const Navbar = () => {
                 </NavigationMenu>
 
 
-                <div className='nav-end pt-3'>
+                <div className='nav-end pt-3 text-[#827397] font-extrabold'>
                     <ModeToggle></ModeToggle>
 
                         {/* for mobile responsive */}
