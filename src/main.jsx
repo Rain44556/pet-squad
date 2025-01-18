@@ -6,16 +6,18 @@ import { RouterProvider } from 'react-router-dom'
 import { router } from './routes/router'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import { HelmetProvider } from 'react-helmet-async';
+import AuthProvider from './provider/AuthProvider'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div
-      // className='max-w-screen-7xl mx-auto'
-      >
+  <AuthProvider>
+  <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <HelmetProvider>
         <RouterProvider router={router} />
-      </div>
+      </HelmetProvider>
       <ToastContainer></ToastContainer>
     </ThemeProvider>
+  </AuthProvider>
   </StrictMode>,
 )

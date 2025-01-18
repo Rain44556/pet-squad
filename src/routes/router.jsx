@@ -1,5 +1,6 @@
 import MainLayout from "@/layout/MainLayout";
 import Login from "@/pages/Auth/Login";
+import Error404 from "@/pages/Error404";
 import Home from "@/pages/Home/Home";
 import {
   createBrowserRouter,
@@ -28,4 +29,8 @@ export const router = createBrowserRouter([
   }
       ]
     },
+    {
+      path: "*",
+      element: <Error404></Error404>
+    }
 ]);
