@@ -1,6 +1,6 @@
 
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "react-toastify";
@@ -13,6 +13,7 @@ import Swal from 'sweetalert2'
 const Registration = () => {
     const { registerUser, setUser, userUpdateProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [error, setError] = useState({});
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -23,33 +24,60 @@ const Registration = () => {
         const password = e.target.password.value;
 
 
+        if (password.length < 6) {
+            setError({ ...error, password: "Must be at least 6 characters!!" })
+            return;
+        }
+        const checkUpperCase = /[A-z]/;
+        if (!checkUpperCase.test(password)) {
+            setError({ ...error, password: 'Must include at least one uppercase letter!' })
+            return;
+        }
+        const checkLowerCase = /[a-z]/;
+        if (!checkLowerCase.test(password)) {
+            setError({ ...error, password: 'Must include at least one lower letter!' })
+            return;
+        }
+
+
         registerUser(email, password)
             .then(result => {
                 const user = result.user;
                 // console.log(user);
                 setUser(user);
-                Swal.fire({
-                    title: 'Register Successfully!',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
-                });
-                userUpdateProfile({ displayName: name, photoURL: photo })
-                    .then(() => {
-                        navigate("/")
-                    }).catch(err => {
-                        toast(err);
-                    })
 
+                userUpdateProfile({ displayName: name, photoURL: photo })
+                const userInfoInDB =
+                {
+                    name,
+                    email,
+                    photo,
+                    role: "user"
+                };
+                fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userInfoInDB)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire({
+                                title: "Successfully registered! Let’s get started!!!",
+                                icon: "success",
+                                draggable: true
+                            });
+                            navigate("/")
+                        }
+                    })
             })
             .catch((error) => {
                 toast.error(error.message);
             })
 
-    }
+    };
 
 
     return (
@@ -103,6 +131,12 @@ const Registration = () => {
                                 className="mt-1"
                                 required
                             />
+
+                            {
+                                error.password && (<label className="label text-red-600 text-sm font-medium">
+                                    {error.password}
+                                </label>)
+                            }
                         </div>
 
                         <div>
