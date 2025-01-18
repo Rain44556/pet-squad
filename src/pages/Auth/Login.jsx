@@ -1,9 +1,9 @@
+import React, { useContext } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import login2 from '../../assets/login2.json'
+import login from '../../assets/login.json'
 import Lottie from 'lottie-react';
 import Swal from 'sweetalert2'
 import { toast } from 'react-toastify';
@@ -51,10 +51,10 @@ const Login = () => {
             <Helmet>
                 <title>Login | Pet Squad</title>
             </Helmet>
-            <div className="grid lg:grid-cols-2 gap-10 justify-center items-center min-h-screen bg-purple-50">
-                <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-14 mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 justify-center items-center min-h-screen bg-secondary">
+                <div className="w-full max-w-md bg-primary-foreground rounded-lg shadow-lg p-14 mx-auto">
 
-                    <h2 className="text-2xl font-extrabold text-center text-[#695d79] font-headingFont">Login to Pet Squad</h2>
+                    <h2 className="text-2xl font-extrabold text-center text-colorPrimary font-headingFont">Login to Pet Squad</h2>
                     <p className="mt-2 text-center text-gray-600">
                         Welcome back! To proceed, please enter your login and password!!
                     </p>
@@ -124,7 +124,7 @@ const Login = () => {
 
                 <div>
                     <Lottie
-                        animationData={login2}
+                        animationData={login}
                         loop={true}
                         className='max-w-md' />
                 </div>

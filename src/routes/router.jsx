@@ -1,5 +1,7 @@
 import MainLayout from "@/layout/MainLayout";
 import Login from "@/pages/Auth/Login";
+import Registration from "@/pages/Auth/Registration";
+
 import Error404 from "@/pages/Error404";
 import Home from "@/pages/Home/Home";
 import {
@@ -7,30 +9,34 @@ import {
 } from "react-router-dom";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout></MainLayout>,
-      children: [
-        {
-            path: '/',
-            element: <Home></Home>
-        },
-        {
-          path: '/peListing',
-          element: <h1>list</h1>
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>
+      },
+      {
+        path: '/peListing',
+        element: <h1>list</h1>
       },
       {
         path: '/donationCampaigns',
         element: <h1>donation</h1>
-    },
-    {
-      path: '/login',
-      element: <Login></Login>
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Registration></Registration>
+      }
+    ]
+  },
+  {
+    path: "*",
+    element: <Error404></Error404>
   }
-      ]
-    },
-    {
-      path: "*",
-      element: <Error404></Error404>
-    }
 ]);

@@ -40,6 +40,14 @@ export default {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
+			colorPrimary: {
+				DEFAULT: 'hsl(var(--color-primary))',
+
+			},
+			colorSecondary: {
+				DEFAULT: 'hsl(var(--color-secondary))',
+
+			},
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
