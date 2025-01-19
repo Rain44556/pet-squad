@@ -90,7 +90,6 @@ const Registration = () => {
                 <div className="w-full max-w-md bg-primary-foreground rounded-lg shadow-lg p-14 mx-auto my-10">
 
                     <h2 className="text-2xl font-extrabold text-center text-colorPrimary font-headingFont">Create Your Account!!</h2>
-                    <SocialLogin></SocialLogin>
 
                     <form
                         onSubmit={handleRegister}
@@ -163,6 +162,7 @@ const Registration = () => {
                                 Register
                             </Button>
                         </div>
+                        <SocialLogin></SocialLogin>
                     </form>
 
 

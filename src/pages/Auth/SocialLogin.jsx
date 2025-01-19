@@ -2,6 +2,7 @@ import AuthContext from '@/provider/AuthContext';
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const SocialLogin = () => {
     const { loginWithGoogle, setUser,loginWithGithub } = useContext(AuthContext);
@@ -67,22 +68,21 @@ const SocialLogin = () => {
 
     return (
         <div className=''>
-            <p>
-                <button
-                    onClick={handleGoogleLogin}
-                    className="w-full border py-3 my-4"> Sign Up With Google</button>
-            </p>
-            <p>
-                <button
-                    onClick={handleGithub}
-                    className="w-full border py-3"> Sign Up With Github</button>
-            </p>
-
-            <div class="flex items-center justify-center my-4">
+             <div class="flex items-center justify-center my-4">
                 <div class="flex-grow border-t border-gray-300"></div>
                 <span class="mx-4 text-gray-500">OR</span>
                 <div class="flex-grow border-t border-gray-300"></div>
             </div>
+            <p>
+                <button
+                    onClick={handleGoogleLogin}
+                    className="w-full border py-3 my-4 flex justify-center gap-2"><FaGoogle size={20}></FaGoogle> Sign Up With Google</button>
+            </p>
+            <p>
+                <button
+                    onClick={handleGithub}
+                    className="w-full border py-3 flex justify-center gap-2"> <FaGithub size={20}/> Sign Up With Github</button>
+            </p>
         </div>
     );
 };

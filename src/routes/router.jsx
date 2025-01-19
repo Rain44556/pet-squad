@@ -1,3 +1,4 @@
+import Dashboard from "@/layout/Dashboard";
 import MainLayout from "@/layout/MainLayout";
 import Login from "@/pages/Auth/Login";
 import Registration from "@/pages/Auth/Registration";
@@ -7,6 +8,8 @@ import Home from "@/pages/Home/Home";
 import {
   createBrowserRouter,
 } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
+import Pets from "@/pages/PrivatePages/Dashboard/pets";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +36,36 @@ export const router = createBrowserRouter([
         path: '/register',
         element: <Registration></Registration>
       }
+    ]
+  },
+  {
+    path: 'dashboard',
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      {
+        path: 'addPet',
+        element: <Pets></Pets>
+      },
+      {
+        path: 'myAddedPets',
+        element: <Pets></Pets>
+      },
+      {
+        path: 'adoptionRequest',
+        element: <Pets></Pets>
+      },
+      {
+        path: 'createDonationCampaign',
+        element: <Pets></Pets>
+      },
+      {
+        path: 'myDonationCampaigns',
+        element: <Pets></Pets>
+      },
+      {
+        path: 'myDonations',
+        element: <Pets></Pets>
+      },
     ]
   },
   {

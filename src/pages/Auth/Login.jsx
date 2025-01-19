@@ -11,6 +11,7 @@ import AuthContext from '@/provider/AuthContext';
 import { Helmet } from 'react-helmet-async';
 import SocialLogin from './SocialLogin';
 
+
 const Login = () => {
 
     const { loginUser, setUser } = useContext(AuthContext);
@@ -60,8 +61,6 @@ const Login = () => {
                         Welcome back! To proceed, please enter your login and password!!
                     </p>
 
-                    <SocialLogin></SocialLogin>
-
                     <form
                         onSubmit={handleLogin}
                         className="space-y-4 mt-6">
@@ -102,6 +101,7 @@ const Login = () => {
                                 Login
                             </Button>
                         </div>
+                        <SocialLogin></SocialLogin>
                     </form>
 
 

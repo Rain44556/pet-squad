@@ -61,9 +61,9 @@ const Navbar = () => {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent>
                                     <DropdownMenuItem>
-                                        <span>{user?.displayName}k</span>
+                                        <NavLink to="/dashboard">Dashboard</NavLink>
                                     </DropdownMenuItem>
-                                    <DropdownMenuItem onClick={handleLogout}>
+                                    <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                                         Logout
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
@@ -93,7 +93,15 @@ const Navbar = () => {
 
                             {/* Login/Logout */}
                             {user && user?.email ?
-                                (<NavLink className='px-4' onClick={handleLogout}>Logout</NavLink>)
+                                (
+                                <ul>
+                                    <li>
+                                    <NavLink className='px-4' to="/dashboard">Dashboard</NavLink>
+                                    </li>
+                                    <li>
+                                    <NavLink className='px-4' onClick={handleLogout}>Logout</NavLink>
+                                    </li>
+                                </ul>)
                                 :
                                 <NavLink className="px-4" to="/login">Login</NavLink>
                             }
