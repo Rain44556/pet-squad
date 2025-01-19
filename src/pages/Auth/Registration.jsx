@@ -43,8 +43,8 @@ const Registration = () => {
         registerUser(email, password)
             .then(result => {
                 const user = result.user;
-                // console.log(user);
-                setUser(user);
+                console.log(user);
+                // setUser(user);
 
                 userUpdateProfile({ displayName: name, photoURL: photo })
                 const userInfoInDB =
