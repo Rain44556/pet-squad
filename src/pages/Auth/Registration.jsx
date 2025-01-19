@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "@/provider/AuthContext";
 import { Label } from '@/components/ui/label';
 import Swal from 'sweetalert2'
+import SocialLogin from './SocialLogin';
 
 const Registration = () => {
     const { registerUser, setUser, userUpdateProfile } = useContext(AuthContext);
@@ -43,8 +44,8 @@ const Registration = () => {
         registerUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
-                // setUser(user);
+                // console.log(user);
+                setUser(user);
 
                 userUpdateProfile({ displayName: name, photoURL: photo })
                 const userInfoInDB =
@@ -86,9 +87,10 @@ const Registration = () => {
                 <title>Register | Pet Squad</title>
             </Helmet>
             <div className="grid lg:grid-cols-2 gap-10 justify-center items-center min-h-screen bg-secondary">
-                <div className="w-full max-w-md bg-primary-foreground rounded-lg shadow-lg p-14 mx-auto">
+                <div className="w-full max-w-md bg-primary-foreground rounded-lg shadow-lg p-14 mx-auto my-10">
 
                     <h2 className="text-2xl font-extrabold text-center text-colorPrimary font-headingFont">Create Your Account!!</h2>
+                    <SocialLogin></SocialLogin>
 
                     <form
                         onSubmit={handleRegister}

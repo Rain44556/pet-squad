@@ -9,6 +9,7 @@ import Swal from 'sweetalert2'
 import { toast } from 'react-toastify';
 import AuthContext from '@/provider/AuthContext';
 import { Helmet } from 'react-helmet-async';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
 
@@ -41,7 +42,7 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch((error) => {
-                toast.error(error);
+                toast.error("Something is wrong!!");
             })
     }
 
@@ -58,6 +59,8 @@ const Login = () => {
                     <p className="mt-2 text-center text-gray-600">
                         Welcome back! To proceed, please enter your login and password!!
                     </p>
+
+                    <SocialLogin></SocialLogin>
 
                     <form
                         onSubmit={handleLogin}

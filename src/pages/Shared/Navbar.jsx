@@ -51,7 +51,6 @@ const Navbar = () => {
 
                         {/* Login/Logout */}
                         {user && user?.email ?
-
                             (<DropdownMenu>
                                 <DropdownMenuTrigger>
                                     <img
@@ -70,7 +69,7 @@ const Navbar = () => {
                                 </DropdownMenuContent>
                             </DropdownMenu>)
                             :
-                            <Link className="px-4" to="/login">Login</Link>
+                            <NavLink className="px-4" to="/login">Login</NavLink>
                         }
                     </NavigationMenuList>
                 </NavigationMenu>
@@ -91,6 +90,13 @@ const Navbar = () => {
                             <div className="flex flex-col items-start">
                                 {navMenuLinks}
                             </div>
+
+                            {/* Login/Logout */}
+                            {user && user?.email ?
+                                (<NavLink className='px-4' onClick={handleLogout}>Logout</NavLink>)
+                                :
+                                <NavLink className="px-4" to="/login">Login</NavLink>
+                            }
                         </SheetContent>
                     </Sheet>
                 </div>
