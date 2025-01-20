@@ -24,11 +24,11 @@ const SocialLogin = () => {
                 };
                 axiosPublic.post('/users', userInfoInDB)
                     .then(res => {
-                        console.log(res.data);
-                        // if (data.insertedId) {
-                        //     toast.success("Welcome!!");
-                        //     navigate("/")
-                        // }
+                        // console.log(res.data);
+                        if (data.insertedId) {
+                            toast.success("Welcome!!");
+                            navigate("/")
+                        }
                         navigate("/");                        
                     })
             })

@@ -12,7 +12,7 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const axiosPublic = useAxiosPublic();
 const axiosSecure = useAxiosSecure();
-const navigate = useNavigate();
+
 
 const AddPets = () => {
     const petCategories = [
@@ -40,8 +40,7 @@ const AddPets = () => {
             longDescription: "",
           }}
 
-          errors handling
-        
+          // errors handling
           validate={(values) => {
             const errors = {};
             if (!values.name) {
@@ -56,6 +55,11 @@ const AddPets = () => {
             if (!values.location) {
               errors.location = "Location is required";
             }
+            // if(values.shortDescription.length > 30){
+            //   errors.shortDescription = "Your note is too long! Please shorten it to at least 30 characters!";
+            // }else if(values.shortDescription.length < 30){
+            //   errors.shortDescription = "Your note is too short! Please write at least 30 characters!";
+            // }
             return errors;
           }}
 
@@ -78,8 +82,10 @@ const AddPets = () => {
                 age: values.age,
                 category: values.category,
                 location: values.location,
-                shortDescription: values.shortDescription,
-                longDescription: values.longDescription
+                "short description": values.shortDescription,
+                "long description": values.longDescription,
+                "date and time": new Date(res.data.data.time * 1000).toLocaleString(),
+                 adopted: "false"
 
               }
 
@@ -88,7 +94,6 @@ const AddPets = () => {
               if(pets.data.insertedId){
                 Swal.fire(`Your ${values.name} has been added successfully!`);
               }
-              navigate('/pets');
             }
           }}
         >
@@ -208,6 +213,9 @@ const AddPets = () => {
                   placeholder="A short note about the pet"
                   className="w-full mt-1 border border-gray-300 p-2 rounded-lg"
                 />
+                {errors.shortDescription && (
+                  <p className="text-sm text-red-600 mt-1">{errors.shortDescription}</p>
+                )}
               </div>
     
               <div>
