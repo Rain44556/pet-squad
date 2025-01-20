@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Pets from "@/pages/PrivatePages/Dashboard/pets";
+import AddPets from "@/pages/PrivatePages/Dashboard/AddPets";
 
 export const router = createBrowserRouter([
   {
@@ -44,10 +45,10 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'addPet',
-        element: <Pets></Pets>
+        element: <AddPets></AddPets>
       },
       {
-        path: 'myAddedPets',
+        path: 'pets',
         element: <Pets></Pets>
       },
       {

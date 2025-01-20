@@ -97,12 +97,12 @@ const Registration = () => {
 
                         <div>
                             <Label htmlFor="name">
-                                Name
+                                Full Name*
                             </Label>
                             <Input
                                 id="name"
                                 type="text"
-                                placeholder="Full Name"
+                                placeholder="name"
                                 className="mt-1"
                                 required
                             />

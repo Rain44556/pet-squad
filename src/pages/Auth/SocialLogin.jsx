@@ -3,10 +3,12 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import useAxiosPublic from '@/hooks/useAxiosPublic';
 
 const SocialLogin = () => {
     const { loginWithGoogle, setUser,loginWithGithub } = useContext(AuthContext);
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     const handleGoogleLogin = () => {
         loginWithGoogle()
@@ -20,19 +22,14 @@ const SocialLogin = () => {
                     name: res.user?.displayName,
                     role: "user"
                 };
-                fetch('http://localhost:5000/users', {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(userInfoInDB)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.insertedId) {
-                            toast.success("Welcome!!");
-                            navigate("/")
-                        }
+                axiosPublic.post('/users', userInfoInDB)
+                    .then(res => {
+                        console.log(res.data);
+                        // if (data.insertedId) {
+                        //     toast.success("Welcome!!");
+                        //     navigate("/")
+                        // }
+                        navigate("/");                        
                     })
             })
     }

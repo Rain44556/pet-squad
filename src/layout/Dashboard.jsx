@@ -6,16 +6,16 @@ const Dashboard = () => {
     return (
         <div className='font-bodyFont'>
             <Navbar></Navbar>
-            <div className='flex my-10 gap-10'>
+            <div className='flex my-10 gap-10 px-10'>
 
                 {/* side-bar content */}
-                <div className='w-72 min-h-full bg-colorPrimary p-5'>
+                <div className='w-72 min-h-full bg-colorPrimary p-10 text-yellow-50'>
                     <ul>
                         <li>
                             <NavLink to="/dashboard/addPet" className="font-headingFont font-extrabold">Add a Pet</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/dashboard/myAddedPets" className="font-headingFont font-extrabold">My Added Pets</NavLink>
+                            <NavLink to="/dashboard/pets" className="font-headingFont font-extrabold">My Added Pets</NavLink>
                         </li>
                         <li>
                             <NavLink to="/dashboard/adoptionRequest" className="font-headingFont font-extrabold">Adoption Request</NavLink>

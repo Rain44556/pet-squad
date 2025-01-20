@@ -96,7 +96,7 @@ const Login = () => {
                         <div>
                             <Button
                                 type="submit"
-                                className="w-full bg-[#4f455e] hover:bg-purple-900 text-white font-medium py-2 px-4 rounded-md transition"
+                                className="w-full bg-[#4f455e] hover:bg-purple-500 text-white font-medium py-2 px-4 rounded-md transition"
                             >
                                 Login
                             </Button>
