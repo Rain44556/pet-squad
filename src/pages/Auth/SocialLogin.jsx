@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import useAxiosPublic from '@/hooks/useAxiosPublic';
+import Swal from 'sweetalert2';
 
 const SocialLogin = () => {
     const { loginWithGoogle, setUser,loginWithGithub } = useContext(AuthContext);
@@ -25,11 +26,14 @@ const SocialLogin = () => {
                 axiosPublic.post('/users', userInfoInDB)
                     .then(res => {
                         // console.log(res.data);
-                        if (data.insertedId) {
-                            toast.success("Welcome!!");
-                            navigate("/")
-                        }
-                        navigate("/");                        
+                        // if (res.data.insertedId) {
+                        //     Swal.fire({
+                        //         title: " You’re now ready to explore!",
+                        //         icon: "success",
+                        //         draggable: true
+                        //       });
+                        // }           
+                        navigate("/");          
                     })
             })
     }
@@ -46,20 +50,18 @@ const SocialLogin = () => {
                     name: res.user?.displayName,
                     role: "user"
                 };
-                fetch('http://localhost:5000/users', {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(userInfoInDB)
+                axiosPublic.post('/users', userInfoInDB)
+                .then(res => {
+                    // console.log(res.data);
+                    // if (res.data.insertedId) {
+                    //     Swal.fire({
+                    //         title: " You’re now ready to explore!",
+                    //         icon: "success",
+                    //         draggable: true
+                    //       });
+                    // }  
+                    navigate("/");                   
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.insertedId) {
-                            toast.success("Welcome!!");
-                            navigate("/")
-                        }
-                    })
             })
     }
 
