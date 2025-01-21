@@ -39,18 +39,6 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, githubProvider);
     }
 
-    const userInfo = {
-        user,
-        setUser,
-        loading,
-        loginUser,
-        registerUser,
-        userUpdateProfile,
-        logoutUser,
-        loginWithGoogle,
-        loginWithGithub
-
-    }
 
     //set observer to get the current user
     useEffect(() => {
@@ -76,6 +64,20 @@ const AuthProvider = ({ children }) => {
             return unsubscribe();
         };
     }, [axiosPublic]);
+
+
+    const userInfo = {
+        user,
+        setUser,
+        loading,
+        loginUser,
+        registerUser,
+        userUpdateProfile,
+        logoutUser,
+        loginWithGoogle,
+        loginWithGithub
+
+    }
 
 
     return (

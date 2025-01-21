@@ -1,12 +1,11 @@
+import React from 'react';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
-import axios from 'axios';
 import { Formik } from 'formik';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import Select from 'react-select'
 import Swal from "sweetalert2";
+
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -23,6 +22,8 @@ const AddPets = () => {
         { value: 'fish', label: 'Fish' },
         { value: 'other', label: 'Other' },
       ]
+
+
 
     return (
         <div className="max-w-4xl mx-auto p-10 bg-primary-foreground shadow-lg rounded-lg">
@@ -63,7 +64,7 @@ const AddPets = () => {
             return errors;
           }}
 
-          onSubmit= {async (values) => {
+          onSubmit= {async (values, { resetForm }) => {
 
                 const formData = new FormData();
                 formData.append('image', values.image);
@@ -91,6 +92,7 @@ const AddPets = () => {
 
               const pets = await axiosSecure.post('/pets', petData);
               // console.log(pets.data);
+              resetForm();
               if(pets.data.insertedId){
                 Swal.fire(`Your ${values.name} has been added successfully!`);
               }
@@ -172,7 +174,7 @@ const AddPets = () => {
                 </label>
                 <Select
                   options={petCategories}
-                  onChange={(selectedOption)=>setFieldValue("category", selectedOption.value)}
+                  onChange={(selectedOption)=>setFieldValue("category", selectedOption?.value || "")}
                   onBlur={handleBlur}
                   className="w-full mt-1 border border-gray-300 p-2 rounded-lg"
                 >

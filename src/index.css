@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 a.active{
-  color: hsl(39, 98%, 52%);
+  color: #fbd70e;
   font-weight: bolder;
 }
 
