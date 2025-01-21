@@ -15,7 +15,7 @@ const Dashboard = () => {
                             <NavLink to="/dashboard/addPet" className="font-headingFont font-extrabold">Add a Pet</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/dashboard/pets" className="font-headingFont font-extrabold">My Added Pets</NavLink>
+                            <NavLink to="/dashboard/myAddedPets" className="font-headingFont font-extrabold">My Added Pets</NavLink>
                         </li>
                         <li>
                             <NavLink to="/dashboard/adoptionRequest" className="font-headingFont font-extrabold">Adoption Request</NavLink>

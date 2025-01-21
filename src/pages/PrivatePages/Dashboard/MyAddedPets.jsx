@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Pets = () => {
+const MyAddedPets = () => {
     return (
         <div>
-            all pets
+            added pets
         </div>
     );
 };
 
-export default Pets;
+export default MyAddedPets;

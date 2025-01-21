@@ -11,6 +11,9 @@ import {
 import PrivateRoute from "./PrivateRoute";
 import Pets from "@/pages/PrivatePages/Dashboard/pets";
 import AddPets from "@/pages/PrivatePages/Dashboard/AddPets";
+import MyAddedPets from "@/pages/PrivatePages/Dashboard/MyAddedPets";
+
+
 
 export const router = createBrowserRouter([
   {
@@ -48,8 +51,8 @@ export const router = createBrowserRouter([
         element: <AddPets></AddPets>
       },
       {
-        path: 'pets',
-        element: <Pets></Pets>
+        path: 'myAddedPets',
+        element: <MyAddedPets> </MyAddedPets>
       },
       {
         path: 'adoptionRequest',

@@ -61,7 +61,7 @@ const Navbar = () => {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent>
                                     <DropdownMenuItem>
-                                        <NavLink to="/dashboard/pets">Dashboard</NavLink>
+                                        <NavLink to="/dashboard">Dashboard</NavLink>
                                     </DropdownMenuItem>
                                     <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                                         Logout
@@ -96,7 +96,7 @@ const Navbar = () => {
                                 (
                                 <ul>
                                     <li>
-                                    <NavLink className='px-4' to="/dashboard/pets">Dashboard</NavLink>
+                                    <NavLink className='px-4' to="/dashboard">Dashboard</NavLink>
                                     </li>
                                     <li>
                                     <NavLink className='px-4' onClick={handleLogout}>Logout</NavLink>
