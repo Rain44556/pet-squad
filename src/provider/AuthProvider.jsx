@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import AuthContext from './AuthContext';
+import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import auth from '@/firebase/firebase.config';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 
+
+
 const googleAuthProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
+export const AuthContext = createContext("");
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -39,13 +41,14 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, githubProvider);
     }
 
+   
 
     //set observer to get the current user
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            if (currentUser) {
 
+            if (currentUser) {
                 const userInfo = { email: currentUser.email };
                 axiosPublic.post('/jwt', userInfo)
                     .then(res => {
@@ -60,11 +63,11 @@ const AuthProvider = ({ children }) => {
                 setLoading(false);
             }
         });
+
         return () => {
             return unsubscribe();
         };
     }, [axiosPublic]);
-
 
     const userInfo = {
         user,
@@ -78,7 +81,6 @@ const AuthProvider = ({ children }) => {
         loginWithGithub
 
     }
-
 
     return (
         <AuthContext.Provider value={userInfo}>

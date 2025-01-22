@@ -7,7 +7,7 @@ import login from '../../assets/login.json'
 import Lottie from 'lottie-react';
 import Swal from 'sweetalert2'
 import { toast } from 'react-toastify';
-import AuthContext from '@/provider/AuthContext';
+import {AuthContext} from '@/provider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
 import SocialLogin from './SocialLogin';
 

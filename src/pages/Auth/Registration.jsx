@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
-import AuthContext from "@/provider/AuthContext";
+import {AuthContext} from "@/provider/AuthProvider";
 import { Label } from '@/components/ui/label';
 import Swal from 'sweetalert2'
 import SocialLogin from './SocialLogin';

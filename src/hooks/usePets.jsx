@@ -1,10 +1,10 @@
 
 
 import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from './useAxiosPublic';
+import useAxiosSecure from './useAxiosSecure';
 
 const usePets = () => {
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const {
         data: pets = [], 
@@ -13,7 +13,7 @@ const usePets = () => {
         } = useQuery({
         queryKey: ['pets'],
         queryFn: async () =>{
-            const res = await axiosPublic.get('/pets');
+            const res = await axiosSecure.get('/pets');
             return res.data;
         }
     });

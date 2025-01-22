@@ -2,7 +2,6 @@ import Dashboard from "@/layout/Dashboard";
 import MainLayout from "@/layout/MainLayout";
 import Login from "@/pages/Auth/Login";
 import Registration from "@/pages/Auth/Registration";
-
 import Error404 from "@/pages/Error404";
 import Home from "@/pages/Home/Home";
 import {
@@ -12,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import Pets from "@/pages/PrivatePages/Dashboard/pets";
 import AddPets from "@/pages/PrivatePages/Dashboard/AddPets";
 import MyAddedPets from "@/pages/PrivatePages/Dashboard/MyAddedPets";
+import UpdatePet from "@/pages/PrivatePages/Dashboard/UpdatePet";
 
 
 
@@ -44,7 +44,8 @@ export const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    // element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    element: <Dashboard></Dashboard>,
     children: [
       {
         path: 'addPet',
@@ -53,6 +54,11 @@ export const router = createBrowserRouter([
       {
         path: 'myAddedPets',
         element: <MyAddedPets> </MyAddedPets>
+      },
+      {
+        path: 'updatePet/:id',
+        element: <UpdatePet></UpdatePet>,
+        loader: ({params}) => fetch(`http://localhost:5000/pets/${params.id}`)
       },
       {
         path: 'adoptionRequest',

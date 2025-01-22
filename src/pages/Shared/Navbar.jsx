@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import AuthContext from '@/provider/AuthContext';
+import {AuthContext} from '@/provider/AuthProvider';
 import { MenuIcon } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';

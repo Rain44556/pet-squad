@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
@@ -7,15 +8,15 @@ import Select from 'react-select'
 import Swal from "sweetalert2";
 
 
+const UpdatePet = () => {
+    const { image, name, age, category, location, shortDescription, longDescription, _id} = useLoaderData();
+    // console.log(pets);
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-
-
-
-const AddPets = () => {
-  const axiosPublic = useAxiosPublic();
+const axiosPublic = useAxiosPublic();
 const axiosSecure = useAxiosSecure();
+
     const petCategories = [
         { value: 'dog', label: 'Dog' },
         { value: 'cat', label: 'Cat' },
@@ -24,14 +25,13 @@ const axiosSecure = useAxiosSecure();
         { value: 'fish', label: 'Fish' },
         { value: 'other', label: 'Other' },
       ]
-
-
-
     return (
-        <div className="max-w-4xl mx-auto p-10 bg-primary-foreground shadow-lg rounded-lg">
-        <SectionTitle
-        title={"Add Your Pet"}
-        ></SectionTitle>
+        <div>
+            <SectionTitle
+            title={"Update a Pet Info"}
+            ></SectionTitle>
+
+<div className="max-w-4xl mx-auto p-10 bg-primary-foreground shadow-lg rounded-lg">
         <Formik
           initialValues={{
             image: null,
@@ -92,11 +92,11 @@ const axiosSecure = useAxiosSecure();
 
               }
 
-              const pets = await axiosSecure.post('/pets', petData);
-              console.log(pets);
+              const pets = await axiosSecure.patch(`/pets/${_id}`, petData);
+              console.log(pets.data);
               resetForm();
-              if(pets.data.insertedId){
-                Swal.fire(`Your ${values.name} has been added successfully!`);
+              if(pets.data.modifiedCount>0){
+                Swal.fire(`Your ${values.name} has been updated successfully!`);
               }
             }
           }}
@@ -249,7 +249,8 @@ const axiosSecure = useAxiosSecure();
           )}
         </Formik>
       </div>
+        </div>
     );
 };
 
-export default AddPets;
+export default UpdatePet;

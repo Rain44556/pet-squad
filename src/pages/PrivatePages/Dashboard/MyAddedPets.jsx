@@ -67,7 +67,7 @@ const MyAddedPets = () => {
             <TableCell>{pet.category}</TableCell>
             <TableCell><img className='w-16 rounded-3xl' src={pet.image}></img></TableCell>
             <TableCell>{pet.adopted}</TableCell>
-            <TableCell><Link to=""><button><MdBrowserUpdated size={25} /></button></Link></TableCell>
+            <TableCell><Link to={`/dashboard/updatePet/${pet._id}`}><button><MdBrowserUpdated size={25} /></button></Link></TableCell>
             <TableCell><button onClick={()=>handleDeletePet(pet)}><MdDeleteForever size={25}/></button></TableCell>
             <TableCell><button>{pet.adopted}</button></TableCell>
           </TableRow>
