@@ -89,7 +89,6 @@ const axiosSecure = useAxiosSecure();
                 "long description": values.longDescription,
                 "date and time": new Date(res.data.data.time * 1000).toLocaleString(),
                  adopted: "false"
-
               }
 
               const pets = await axiosSecure.post('/pets', petData);

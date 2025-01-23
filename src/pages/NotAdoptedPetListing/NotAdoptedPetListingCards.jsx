@@ -5,7 +5,7 @@ const NotAdoptedPetListingCards = ({pet}) => {
     return (
         <motion.div
           className="bg-white shadow-lg rounded-lg overflow-hidden max-w-sm mx-auto transition-transform transform hover:scale-105 hover:shadow-2xl"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
