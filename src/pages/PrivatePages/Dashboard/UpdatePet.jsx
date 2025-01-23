@@ -34,13 +34,13 @@ const axiosSecure = useAxiosSecure();
 <div className="max-w-4xl mx-auto p-10 bg-primary-foreground shadow-lg rounded-lg">
         <Formik
           initialValues={{
-            image: null,
-            name: "",
-            age: "",
-            category: "",
-            location: "",
-            shortDescription: "",
-            longDescription: "",
+            image: image,
+            name: name,
+            age: age,
+            category: category,
+            location: location,
+            shortDescription: shortDescription,
+            longDescription: longDescription,
           }}
 
           // errors handling

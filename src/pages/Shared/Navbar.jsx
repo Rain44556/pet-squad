@@ -17,7 +17,7 @@ const Navbar = () => {
 
     const navMenuLinks = <>
         <NavLink className="px-4" to="/">Home</NavLink>
-        <NavLink className="px-4" to="/peListing">Pet Listing</NavLink>
+        <NavLink className="px-4" to="/petListing">Pet Listing</NavLink>
         <NavLink className="px-4" to="/donationCampaigns">Donation Campaigns</NavLink>
     </>
 

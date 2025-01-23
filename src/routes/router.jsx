@@ -12,6 +12,7 @@ import Pets from "@/pages/PrivatePages/Dashboard/pets";
 import AddPets from "@/pages/PrivatePages/Dashboard/AddPets";
 import MyAddedPets from "@/pages/PrivatePages/Dashboard/MyAddedPets";
 import UpdatePet from "@/pages/PrivatePages/Dashboard/UpdatePet";
+import NotAdoptedPetListing from "@/pages/NotAdoptedPetListing/NotAdoptedPetListing";
 
 
 
@@ -25,8 +26,9 @@ export const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        path: '/peListing',
-        element: <h1>list</h1>
+        path: '/petListing',
+        element: <NotAdoptedPetListing></NotAdoptedPetListing>,
+        loader: () => fetch('http://localhost:5000/pets/isNotAdopted')
       },
       {
         path: '/donationCampaigns',
