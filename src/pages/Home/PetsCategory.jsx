@@ -129,26 +129,6 @@ const petData = [
         }
       ]
     },
-    {
-      "id": 7,
-      "category": "Turtles",
-      "pets": [
-        {
-          "id": "turtle1",
-          "name": "Shelly",
-          "age": 5,
-          "location": "Orlando, USA",
-          "image": "/images/turtle1.jpg"
-        },
-        {
-          "id": "turtle2",
-          "name": "Speedy",
-          "age": 3,
-          "location": "Phoenix, USA",
-          "image": "/images/turtle2.jpg"
-        }
-      ]
-    }
   ]
   
 

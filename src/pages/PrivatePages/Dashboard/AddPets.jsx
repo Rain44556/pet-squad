@@ -17,12 +17,13 @@ const AddPets = () => {
   const axiosPublic = useAxiosPublic();
 const axiosSecure = useAxiosSecure();
     const petCategories = [
+      { value: 'cat', label: 'Cat' },
         { value: 'dog', label: 'Dog' },
-        { value: 'cat', label: 'Cat' },
         { value: 'bird', label: 'Bird' },
+        { value: 'panda', label: 'Panda' },
         { value: 'rabbit', label: 'Rabbit'},
         { value: 'fish', label: 'Fish' },
-        { value: 'other', label: 'Other' },
+        { value: 'hamster', label: 'Hamster' },
       ]
 
 
