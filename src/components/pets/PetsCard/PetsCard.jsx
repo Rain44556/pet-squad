@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
 const PetsCard = ({pet}) => {
     return (
@@ -22,9 +23,9 @@ const PetsCard = ({pet}) => {
           <h2 className="text-xl font-bold text-colorPrimary">{pet.name}</h2>
           <p className="text-colorSecondary">Age: {pet.age}</p>
           <p className="text-colorSecondary">Location: {pet.location}</p>
-          <button className="mt-4 bg-yellow-400 text-sm py-2 px-4 rounded-lg shadow-md">
+          <Link to={ `/petDetails/${pet._id}`}><button className="mt-4 bg-yellow-400 text-sm py-2 px-4 rounded-lg shadow-md">
             View Details
-          </button>
+          </button></Link>
         </div>
       </motion.div>
     );

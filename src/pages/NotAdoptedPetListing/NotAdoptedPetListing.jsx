@@ -4,12 +4,14 @@ import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Helmet } from 'react-helmet-async';
-import PetsCard from '@/components/PetsCard/PetsCard';
+import PetsCard from '@/components/pets/PetsCard/PetsCard';
 
 
 const NotAdoptedPetListing = () => {
     const listingPets = useLoaderData();
     const [listing, setListing] = useState(listingPets);
+    const [category,] = useState([...new Set(listingPets.map(pet => pet.category))]);
+    const [selectedCategory, setSelectedCategory] = useState("");
 
 
     // search for pets using name
@@ -28,7 +30,6 @@ const NotAdoptedPetListing = () => {
     }
 
     // dropdown for pets specific category 
-    const [selectedCategory, setSelectedCategory] = useState("");
     const handleCategorySelect = (category) => {
         setSelectedCategory(category);
     }
@@ -57,18 +58,24 @@ const NotAdoptedPetListing = () => {
                 <div>
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant="outline" className="bg-colorPrimary text-yellow-50 p-6">Select Category </Button>
+                            <Button variant="outline" className="bg-colorPrimary text-yellow-50 p-6 w-44">
+                                {selectedCategory === "" ? 'Select Category' : selectedCategory}
+                             </Button>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent className="w-56">
+                        <DropdownMenuContent className="w-44">
                             <DropdownMenuLabel>Pick Your Beloved Pet</DropdownMenuLabel>
                             <DropdownMenuSeparator />
-                            <DropdownMenuRadioItem onClick={() => handleCategorySelect("cat")} value="Cat">Cat</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem onClick={() => handleCategorySelect("dog")} value="Dog">Dog</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem onClick={() => handleCategorySelect("bird")} value="Bird">Bird</DropdownMenuRadioItem>
+                            {category.map((item) => 
+                                
+                                <DropdownMenuRadioItem onClick={() => handleCategorySelect(item)} value={item}>{item}</DropdownMenuRadioItem>
+                            )
+                            }
+                            {/* <DropdownMenuRadioItem onClick={() => handleCategorySelect("cat")} value="Cat">Cat</DropdownMenuRadioItem> */}
+                            {/* <DropdownMenuRadioItem onClick={() => handleCategorySelect("bird")} value="Bird">Bird</DropdownMenuRadioItem>
                             <DropdownMenuRadioItem onClick={() => handleCategorySelect("panda")} value="Panda">Panda</DropdownMenuRadioItem>
                             <DropdownMenuRadioItem onClick={() => handleCategorySelect("rabbit")} value="Rabbit">Rabbit</DropdownMenuRadioItem>
                             <DropdownMenuRadioItem onClick={() => handleCategorySelect("fish")} value="Fish">Fish</DropdownMenuRadioItem>
-                            <DropdownMenuRadioItem onClick={() => handleCategorySelect("hamster")} value="Hamster">Hamster</DropdownMenuRadioItem>
+                            <DropdownMenuRadioItem onClick={() => handleCategorySelect("hamster")} value="Hamster">Hamster</DropdownMenuRadioItem>  */}
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
