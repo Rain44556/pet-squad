@@ -1,6 +1,7 @@
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
-import React from 'react';
+import { AuthContext } from '@/provider/AuthProvider';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
 
@@ -11,10 +12,11 @@ const CreateDonation = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const { register, handleSubmit, reset } = useForm();
+    const {user} = useContext(AuthContext);
 
 
     const onSubmit = async (data) => {
-    
+
         const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hosting_API, imageFile, {
             headers: {
@@ -25,17 +27,17 @@ const CreateDonation = () => {
             const donationData = {
                 image: res.data.data.display_url,
                 amount: data.amount,
-               "last date": data.lastDate,
-               "short description": data.shortDescription,
+                "last date": data.lastDate,
+                "short description": data.shortDescription,
                 "long description": data.longDescription,
                 "date and time": new Date(res.data.data.time * 1000).toLocaleString(),
-              
+                campaignOwnerEmail: user.email
             }
-             
-            const donation = await axiosSecure.post('/donation', donationData);
+
+            const donation = await axiosSecure.post('/donationCampaign', donationData);
             console.log(donation.data);
 
-            if(donation.data.insertedId){
+            if (donation.data.insertedId) {
                 reset();
                 Swal.fire({
                     position: "top-end",
@@ -43,7 +45,7 @@ const CreateDonation = () => {
                     title: "Created Donation Campaign Successfully",
                     showConfirmButton: false,
                     timer: 1500
-                  });
+                });
             }
         }
     };
@@ -52,54 +54,56 @@ const CreateDonation = () => {
         <div>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="w-full my-6">
+                    <div className="w-full my-6">
                         <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
                     </div>
 
-                        <div className="w-full my-6">
-                            <label>
-                                <span className="text-sm font-medium text-gray-700">Amount*</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Enter the maximum amount"
-                                {...register('amount', { required: true })}
-                                className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
+                    <div className="w-full my-6">
+                        <label>
+                            <span className="text-sm font-medium text-gray-700">Amount*</span>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter the maximum amount"
+                            {...register('amount', { required: true })}
+                            className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
                     </div>
 
                     <div className="w-full my-6">
-                            <label>
-                                <span className="text-sm font-medium text-gray-700">Last Date</span>
-                            </label>
-                            <input
-                                type="date"
-                                placeholder="Enter"
-                                {...register('lastDate', { required: true })}
-                                className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
+                        <label>
+                            <span className="text-sm font-medium text-gray-700">Last Date</span>
+                        </label>
+                        <input
+                            type="date"
+                            placeholder="Enter"
+                            {...register('lastDate', { required: true })}
+                            className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
                     </div>
                     <div className="w-full my-6">
-                            <label>
-                                <span className="text-sm font-medium text-gray-700">Short Description</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="Enter a short description"
-                                {...register('lastDate', { required: true })}
-                                className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
+                        <label>
+                            <span className="text-sm font-medium text-gray-700">Short Description</span>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter a short description"
+                            {...register('lastDate', { required: true })}
+                            className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
                     </div>
 
                     <div>
                         <label>
-                        <span className="text-sm font-medium text-gray-700">Long Description</span>
+                            <span className="text-sm font-medium text-gray-700">Long Description</span>
                         </label>
                         <textarea {...register('longDescription')} className="w-full mt-1 border border-gray-300 p-2 rounded-lg h-28" placeholder="Detail Information"></textarea>
                     </div>
 
+                    <div className='flex justify-center'>
+                        <button className="border-2 bg-colorPrimary px-6 py-2 rounded-md text-white mt-5 hover:rounded-xl font-headingFont">
+                            Submit
+                        </button>
+                    </div>
 
 
-                    <button className="border-2">
-                        Submit
-                    </button>
                 </form>
             </div>
         </div>

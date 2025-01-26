@@ -15,6 +15,7 @@ import NotAdoptedPetListing from "@/pages/NotAdoptedPetListing/NotAdoptedPetList
 import PetDetails from "@/pages/PetDetails/PetDetails";
 import AdoptionRequest from "@/pages/PrivatePages/Dashboard/AdoptionRequest";
 import CreateDonation from "@/pages/PrivatePages/Dashboard/DonationCampaigns/CreateDonation";
+import MyDonationCampaigns from "@/pages/PrivatePages/Dashboard/DonationCampaigns/MyDonationCampaigns";
 
 
 
@@ -79,7 +80,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'myDonationCampaigns',
-        element: <h1>dona</h1>
+        element: <MyDonationCampaigns></MyDonationCampaigns>
       },
       {
         path: 'myDonations',
