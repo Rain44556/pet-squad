@@ -139,7 +139,7 @@ const {user} = useContext(AuthContext);
 
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Name
+                  Full Name*
                 </label>
                 <input
                   type="text"

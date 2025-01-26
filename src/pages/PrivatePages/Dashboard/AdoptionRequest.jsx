@@ -16,13 +16,13 @@ const AdoptionRequest = () => {
 
     const fetchAdoptionList = async () => {
         const res = await axiosSecure(`/adoption/request?email=${user.email}`)
-        console.log(res);
+        // console.log(res);
         setAdoptionRequest(res.data);
     }
 
     const fetchMyRequest = async () => {
         const res = await axiosSecure(`/adoption/myRequest?email=${user.email}`)
-        console.log(res);
+        // console.log(res);
         setMyRequest(res.data);
     }
 
@@ -61,7 +61,10 @@ const AdoptionRequest = () => {
         <div className='my-10'>
 
             <div>
-                <button onClick={() => setTab(0)}>My Request</button>
+                <button 
+                className='border-2 rounded-lg px-5 py-2 mr-5 mb-7 bg-colorPrimary text-white'
+                onClick={() => setTab(0)}>
+                My Request</button>
                 <button onClick={() => setTab(1)}>Adoption Request</button>
             </div>
 

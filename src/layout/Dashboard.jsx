@@ -5,7 +5,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     const {user} = useContext(AuthContext);
-    console.log(user)
+    // console.log(user.role)
     return (
         <div className='font-bodyFont'>
             <Navbar></Navbar>
@@ -32,11 +32,11 @@ const Dashboard = () => {
                         <li>
                             <NavLink to="/dashboard/myDonations" className="font-headingFont font-extrabold">My Donations</NavLink>
                         </li>
-                      {user?.role === "admin" && 
+                      {/* {user?.role === "admin" && 
                        <li>
                             <NavLink to="/dashboard/myDonationCampaigns" className="font-headingFont font-extrabold">Admin Dashboard</NavLink>
                         </li>
-                        }
+                        } */}
                        
                     </ul>
                 </div>

@@ -14,6 +14,7 @@ import UpdatePet from "@/pages/PrivatePages/Dashboard/UpdatePet";
 import NotAdoptedPetListing from "@/pages/NotAdoptedPetListing/NotAdoptedPetListing";
 import PetDetails from "@/pages/PetDetails/PetDetails";
 import AdoptionRequest from "@/pages/PrivatePages/Dashboard/AdoptionRequest";
+import CreateDonation from "@/pages/PrivatePages/Dashboard/DonationCampaigns/CreateDonation";
 
 
 
@@ -74,7 +75,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'createDonationCampaign',
-        element: <h2>cre</h2>
+        element: <CreateDonation></CreateDonation>
       },
       {
         path: 'myDonationCampaigns',
