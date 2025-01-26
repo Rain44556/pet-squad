@@ -15,7 +15,6 @@ const SocialLogin = () => {
         loginWithGoogle()
             .then(res => {
                 const user = res.user;
-                setUser(user);
                 const userInfoInDB =
                 {
                     email: res.user?.email,
@@ -25,14 +24,7 @@ const SocialLogin = () => {
                 };
                 axiosPublic.post('/users', userInfoInDB)
                     .then(res => {
-                        // console.log(res.data);
-                        // if (res.data.insertedId) {
-                        //     Swal.fire({
-                        //         title: " You’re now ready to explore!",
-                        //         icon: "success",
-                        //         draggable: true
-                        //       });
-                        // }           
+                        setUser({...user, ...res.data});           
                         navigate("/");          
                     })
             })
@@ -42,7 +34,6 @@ const SocialLogin = () => {
         loginWithGithub()
             .then(res => {
                 const user = res.user;
-                setUser(user);
                 const userInfoInDB =
                 {
                     email: res.user?.email,
@@ -52,15 +43,8 @@ const SocialLogin = () => {
                 };
                 axiosPublic.post('/users', userInfoInDB)
                 .then(res => {
-                    // console.log(res.data);
-                    // if (res.data.insertedId) {
-                    //     Swal.fire({
-                    //         title: " You’re now ready to explore!",
-                    //         icon: "success",
-                    //         draggable: true
-                    //       });
-                    // }  
-                    navigate("/");                   
+                    setUser({...user, ...res.data});           
+                    navigate("/");          
                 })
             })
     }

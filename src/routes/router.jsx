@@ -7,13 +7,13 @@ import Home from "@/pages/Home/Home";
 import {
   createBrowserRouter,
 } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
-import Pets from "@/pages/PrivatePages/Dashboard/pets";
+// import PrivateRoute from "./PrivateRoute";
 import AddPets from "@/pages/PrivatePages/Dashboard/AddPets";
 import MyAddedPets from "@/pages/PrivatePages/Dashboard/MyAddedPets";
 import UpdatePet from "@/pages/PrivatePages/Dashboard/UpdatePet";
 import NotAdoptedPetListing from "@/pages/NotAdoptedPetListing/NotAdoptedPetListing";
 import PetDetails from "@/pages/PetDetails/PetDetails";
+import AdoptionRequest from "@/pages/PrivatePages/Dashboard/AdoptionRequest";
 
 
 
@@ -70,19 +70,19 @@ export const router = createBrowserRouter([
       },
       {
         path: 'adoptionRequest',
-        element: <Pets></Pets>
+        element: <AdoptionRequest></AdoptionRequest>
       },
       {
         path: 'createDonationCampaign',
-        element: <Pets></Pets>
+        element: <h2>cre</h2>
       },
       {
         path: 'myDonationCampaigns',
-        element: <Pets></Pets>
+        element: <h1>dona</h1>
       },
       {
         path: 'myDonations',
-        element: <Pets></Pets>
+        element: <h1>doa</h1>
       },
     ]
   },

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import useAxiosPublic from '@/hooks/useAxiosPublic';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { Formik } from 'formik';
 import Select from 'react-select'
 import Swal from "sweetalert2";
+import { AuthContext } from '@/provider/AuthProvider';
 
 
 
@@ -15,6 +16,7 @@ const image_hosting_API = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const AddPets = () => {
   const axiosPublic = useAxiosPublic();
 const axiosSecure = useAxiosSecure();
+const {user} = useContext(AuthContext);
 
     const petCategories = [
       { value: 'cat', label: 'Cat' },
@@ -89,7 +91,8 @@ const axiosSecure = useAxiosSecure();
                 "short description": values.shortDescription,
                 "long description": values.longDescription,
                 "date and time": new Date(res.data.data.time * 1000).toLocaleString(),
-                 adopted: "false"
+                ownerEmail: user.email, 
+                adopted: "false"
               }
 
               const pets = await axiosSecure.post('/pets', petData);

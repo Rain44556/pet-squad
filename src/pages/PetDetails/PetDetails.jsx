@@ -7,14 +7,14 @@ import { useLoaderData } from 'react-router-dom';
 
 const customStyles = {
     content: {
-        top: '50%',
+        top: '58%',
         left: '50%',
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         width: '500px',
-        height: '500px'
+        height: '550px'
     },
 };
 

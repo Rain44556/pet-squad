@@ -29,7 +29,7 @@ const Login = () => {
         loginUser(email, password)
             .then((result) => {
                 const user = result.user;
-                // console.log(user);
+                console.log(user);
                 setUser(user);
                 Swal.fire({
                     title: 'Welcome back! You’re now logged in and ready to explore!',
