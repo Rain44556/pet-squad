@@ -93,10 +93,10 @@ const axiosSecure = useAxiosSecure();
               }
 
               const pets = await axiosSecure.patch(`/pets/${_id}`, petData);
-              console.log(pets.data);
+              // console.log(pets.data);
               resetForm();
               if(pets.data.modifiedCount>0){
-                Swal.fire(`Your ${values.name} has been updated successfully!`);
+                Swal.fire(`Your ${values.name}'s information has been updated successfully!`);
               }
             }
           }}

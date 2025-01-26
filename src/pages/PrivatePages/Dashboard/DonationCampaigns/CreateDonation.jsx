@@ -3,6 +3,7 @@ import useAxiosSecure from '@/hooks/useAxiosSecure';
 import { AuthContext } from '@/provider/AuthProvider';
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -13,6 +14,7 @@ const CreateDonation = () => {
     const axiosSecure = useAxiosSecure();
     const { register, handleSubmit, reset } = useForm();
     const {user} = useContext(AuthContext);
+    const navigate = useNavigate();
 
 
     const onSubmit = async (data) => {
@@ -25,6 +27,7 @@ const CreateDonation = () => {
         });
         if (res.data.success) {
             const donationData = {
+                petName: data.name,
                 image: res.data.data.display_url,
                 amount: data.amount,
                 "last date": data.lastDate,
@@ -46,16 +49,27 @@ const CreateDonation = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate('/dashboard/myDonationCampaigns')
             }
         }
     };
 
     return (
-        <div>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="w-full my-6">
                         <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
+                    </div>
+
+                    <div className="w-full my-6">
+                        <label>
+                            <span className="text-sm font-medium text-gray-700">Name*</span>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Please enter the name of your pet"
+                            {...register('name', { required: true })}
+                            className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
                     </div>
 
                     <div className="w-full my-6">
@@ -79,6 +93,7 @@ const CreateDonation = () => {
                             {...register('lastDate', { required: true })}
                             className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
                     </div>
+
                     <div className="w-full my-6">
                         <label>
                             <span className="text-sm font-medium text-gray-700">Short Description</span>
@@ -94,19 +109,17 @@ const CreateDonation = () => {
                         <label>
                             <span className="text-sm font-medium text-gray-700">Long Description</span>
                         </label>
-                        <textarea {...register('longDescription')} className="w-full mt-1 border border-gray-300 p-2 rounded-lg h-28" placeholder="Detail Information"></textarea>
+                        <textarea {...register('longDescription')} className="w-full mt-1 border border-gray-300 p-2 rounded-lg h-28" placeholder="Provide detailed information"></textarea>
                     </div>
 
                     <div className='flex justify-center'>
                         <button className="border-2 bg-colorPrimary px-6 py-2 rounded-md text-white mt-5 hover:rounded-xl font-headingFont">
-                            Submit
-                        </button>
+                            Submit</button>
                     </div>
 
 
                 </form>
             </div>
-        </div>
     );
 };
 

@@ -3,10 +3,11 @@ import useAxiosSecure from '@/hooks/useAxiosSecure';
 import useDonation from '@/hooks/useDonation';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyDonationCampaigns = () => {
-    const [donationCampaign, , refetch] =useDonation();
+    const [donationCampaign, , refetch] = useDonation();
     const axiosSecure = useAxiosSecure();
 
     const handlePause = async (id, isPaused) =>{
@@ -43,7 +44,7 @@ const MyDonationCampaigns = () => {
         <tbody>
           {donationCampaign.map((campaign) => (
             <tr key={campaign._id} className="border-t">
-              <td className="py-2 px-4">{campaign.name}</td>
+              <td className="py-2 px-4">{campaign.petName}</td>
               <td className="py-2 px-4">${campaign.amount}</td>
               <td className="py-2 px-4">
 
@@ -65,11 +66,9 @@ const MyDonationCampaigns = () => {
                   {campaign.isPaused ? "Unpause" : "Pause"}
                 </button>
 
-                <button
+              <Link to={`/dashboard/updateDonationCampaign/${campaign._id}`}>  <button
                   className="px-3 py-1 border-2 border-yellow-500 hover:bg-yellow-400 mx-2 hover:text-white rounded hover:rounded-lg"
-                >
-                  Edit
-                </button>
+                >Edit</button></Link>
 
                 <button
                   className='px-3 py-1 border-2 hover:bg-green-500 hover:text-white border-green-500 rounded hover:rounded-lg'
