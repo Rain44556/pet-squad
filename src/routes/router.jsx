@@ -17,6 +17,7 @@ import AdoptionRequest from "@/pages/PrivatePages/Dashboard/AdoptionRequest";
 import CreateDonation from "@/pages/PrivatePages/Dashboard/DonationCampaigns/CreateDonation";
 import MyDonationCampaigns from "@/pages/PrivatePages/Dashboard/DonationCampaigns/MyDonationCampaigns";
 import UpdateDonationCampaign from "@/pages/PrivatePages/Dashboard/DonationCampaigns/UpdateDonationCampaign";
+import MyDonation from "@/pages/PrivatePages/Dashboard/DonationCampaigns/MyDonation";
 
 
 
@@ -90,7 +91,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'myDonations',
-        element: <h1>doa</h1>
+        element: <MyDonation></MyDonation>
       },
     ]
   },

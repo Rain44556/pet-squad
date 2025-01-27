@@ -58,11 +58,11 @@ const MyDonationCampaigns = () => {
 
       <table className="min-w-full border border-colorPrimary rounded-lg shadow-sm">
         <thead>
-          <tr className="bg-purple-300">
-            <th className="py-2 px-4">Pet Name</th>
-            <th className="py-2 px-4">Maximum donation amount</th>
-            <th className="py-2 px-4">Progress</th>
-            <th className="py-2 px-4">Actions</th>
+          <tr className="bg-purple-300 ">
+            <th className="py-2 px-4 font-semibold">Pet Name</th>
+            <th className="py-2 px-4 font-semibold">Maximum donation amount</th>
+            <th className="py-2 px-4 font-semibold">Progress</th>
+            <th className="py-2 px-4 font-semibold">Actions</th>
           </tr>
         </thead>
         <tbody>

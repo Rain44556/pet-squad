@@ -22,7 +22,7 @@ const PetsAdoptModal = ({ pet, closeModal }) => {
             petId: pet._id,
             petName: pet.name,
             petImage: pet.image,
-            userName: user.displayName,
+            userName: user.displayNamename,
             adopterEmail: user.email,
             ownerEmail: pet.ownerEmail,
             phone,

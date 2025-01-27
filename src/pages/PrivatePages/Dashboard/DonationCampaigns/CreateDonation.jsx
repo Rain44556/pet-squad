@@ -79,7 +79,7 @@ const CreateDonation = () => {
                         </label>
                         <input
                             type="text"
-                            placeholder="Enter the maximum amount"
+                            placeholder="Maximum Donation Amount"
                             {...register('amount', { required: true })}
                             className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
                     </div>
@@ -90,7 +90,7 @@ const CreateDonation = () => {
                         </label>
                         <input
                             type="date"
-                            placeholder="Enter"
+                            placeholder="Last Date of Donation"
                             {...register('lastDate', { required: true })}
                             className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
                     </div>
@@ -110,7 +110,7 @@ const CreateDonation = () => {
                         <label>
                             <span className="text-sm font-medium text-gray-700">Long Description</span>
                         </label>
-                        <textarea {...register('longDescription')} className="w-full mt-1 border border-gray-300 p-2 rounded-lg h-28" placeholder="Provide detailed information"></textarea>
+                        <textarea {...register('longDescription')} className="w-full mt-1 border border-gray-300 p-2 rounded-lg h-28" placeholder="Provide Detailed Information"></textarea>
                     </div>
 
                     <div className='flex justify-center'>

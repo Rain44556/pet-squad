@@ -1,7 +1,6 @@
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
-import usePets from '@/hooks/usePets';
 import { AuthContext } from '@/provider/AuthProvider';
 import { useContext, useEffect, useState } from 'react';
 import { MdDeleteForever } from 'react-icons/md';
@@ -57,7 +56,7 @@ const MyAddedPets = () => {
     <div>
 
       <SectionTitle
-        title={"Added All Pets"}
+        title={"My Added Pets"}
       ></SectionTitle>
 
 
