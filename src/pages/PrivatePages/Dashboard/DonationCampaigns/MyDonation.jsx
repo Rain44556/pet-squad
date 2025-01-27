@@ -32,7 +32,7 @@ const MyDonation = () => {
         <div>
 
         <SectionTitle
-          title={"My Added Pets"}
+          title={"My Donation"}
         ></SectionTitle>
   
   
