@@ -34,7 +34,8 @@ const CreateDonation = () => {
                 "short description": data.shortDescription,
                 "long description": data.longDescription,
                 "date and time": new Date(res.data.data.time * 1000).toLocaleString(),
-                campaignOwnerEmail: user.email
+                campaignOwnerEmail: user.email,
+                donorName: user.displayName,
             }
 
             const donation = await axiosSecure.post('/donationCampaign', donationData);
@@ -101,7 +102,7 @@ const CreateDonation = () => {
                         <input
                             type="text"
                             placeholder="Enter a short description"
-                            {...register('lastDate', { required: true })}
+                            {...register('shortDescription', { required: true })}
                             className="w-full mt-1 border border-gray-300 p-2 rounded-lg" />
                     </div>
 

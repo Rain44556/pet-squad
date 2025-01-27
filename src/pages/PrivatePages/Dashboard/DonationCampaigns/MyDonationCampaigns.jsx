@@ -1,78 +1,96 @@
+import DonatorModal from '@/components/donation/DonatorModal';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import useDonation from '@/hooks/useDonation';
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Modal from 'react-modal';
+
+
+const customStyles = {
+  content: {
+    top: '58%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    width: '500px',
+    height: '550px'
+  },
+};
 
 const MyDonationCampaigns = () => {
-    const [donationCampaign, , refetch] = useDonation();
-    const axiosSecure = useAxiosSecure();
+  const [donationCampaign, , refetch] = useDonation();
+  const axiosSecure = useAxiosSecure();
+  const [donatorsModalIsOpen, setDonatorsModalIsOpen] = useState(false);
 
-    const handlePause = async (id, isPaused) =>{
-        const pauseStatus = {isPaused};
-        console.log(pauseStatus);
-        const res = await axiosSecure.put(`/donationCampaign/${id}`, pauseStatus)
-    
-        console.log(res);
-        if (res.data.modifiedCount > 0) {
-                refetch();
-                Swal.fire({
-                    title: `${isPaused ? "Unpaused" : "Paused"} the campaign`,
-                    icon: "success",
-                    draggable: true
-                });
-            }
-    
+  const handlePause = async (id, isPaused) => {
+    const pauseStatus = { isPaused };
+    console.log(pauseStatus);
+
+    const res = await axiosSecure.put(`/donationCampaign/${id}`, pauseStatus)
+    console.log(res);
+
+    if (res.data.modifiedCount > 0) {
+      refetch();
+      Swal.fire({
+        title: `${isPaused ? "Unpaused" : "Paused"} the campaign`,
+        icon: "success",
+        draggable: true
+      });
     }
+  }
 
-    return (
-        <div className='my-10'>
-            <Helmet><title>My Donation Campaigns | Pet Squad</title></Helmet>
-            {/* <SectionTitle title={"Join Hands with My Donation Campaigns!!"}></SectionTitle> */}
-      
-      <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-sm">
+  const handleViewDonators = () => {
+    setDonatorsModalIsOpen(true);
+  }
+
+  const closeModal = () => {
+    setDonatorsModalIsOpen(false);
+  }
+
+  return (
+    <div className='my-10 text-center'>
+      <Helmet><title>My Donation Campaigns | Pet Squad</title></Helmet>
+
+      <table className="min-w-full border border-colorPrimary rounded-lg shadow-sm">
         <thead>
-          <tr className="bg-gray-100">
-            <th className="py-2 px-4 text-left">Pet Name</th>
-            <th className="py-2 px-4 text-left">Maximum donation amount</th>
-            <th className="py-2 px-4 text-left">Progress</th>
-            <th className="py-2 px-4 text-center">Actions</th>
+          <tr className="bg-purple-300">
+            <th className="py-2 px-4">Pet Name</th>
+            <th className="py-2 px-4">Maximum donation amount</th>
+            <th className="py-2 px-4">Progress</th>
+            <th className="py-2 px-4">Actions</th>
           </tr>
         </thead>
         <tbody>
           {donationCampaign.map((campaign) => (
             <tr key={campaign._id} className="border-t">
               <td className="py-2 px-4">{campaign.petName}</td>
-              <td className="py-2 px-4">${campaign.amount}</td>
+              <td className="py-2 px-4">{campaign.amount} BDT</td>
               <td className="py-2 px-4">
-
-                {/* Donation Progress Bar */}
-                <div className="relative w-full bg-gray-200 rounded-lg h-4">
-                  <div
-                    className="absolute top-0 left-0 h-4 bg-green-500 rounded-lg"
-                    // style={{
-                    //   width: `${(campaign.currentDonation / campaign.maxDonation) * 100}%`,
-                    // }}
-                  ></div>
-                </div>
+               progress
               </td>
-              <td className="py-2 px-4 text-center">
 
-                <button 
-                onClick={()=>handlePause(campaign._id,!campaign.isPaused)}
-                className='px-3 py-1 border-2 hover:bg-purple-400 hover:text-white border-purple-500 rounded hover:rounded-lg'>
+              <td className="py-2 px-4">
+                <button
+                  onClick={() => handlePause(campaign._id, !campaign.isPaused)}
+                  className='px-3 py-1 border-2 hover:bg-purple-400 hover:text-white border-purple-500 rounded hover:rounded-lg w-28'>
                   {campaign.isPaused ? "Unpause" : "Pause"}
                 </button>
 
-              <Link to={`/dashboard/updateDonationCampaign/${campaign._id}`}>  <button
-                  className="px-3 py-1 border-2 border-yellow-500 hover:bg-yellow-400 mx-2 hover:text-white rounded hover:rounded-lg"
-                >Edit</button></Link>
+                <Link to={`/dashboard/updateDonationCampaign/${campaign._id}`}>
+                  <button
+                    className="px-3 py-1 border-2 border-yellow-500 hover:bg-yellow-400 mx-2 hover:text-white rounded hover:rounded-lg">
+                    Edit
+                  </button>
+                </Link>
 
                 <button
-                  className='px-3 py-1 border-2 hover:bg-green-500 hover:text-white border-green-500 rounded hover:rounded-lg'
-                >
+                  onClick={handleViewDonators}
+                  className='px-3 py-1 border-2 hover:bg-green-500 hover:text-white border-green-500 rounded hover:rounded-lg'>
                   View Donators
                 </button>
               </td>
@@ -80,8 +98,19 @@ const MyDonationCampaigns = () => {
           ))}
         </tbody>
       </table>
+
+      <Modal
+        isOpen={donatorsModalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal">
+        {donatorsModalIsOpen && (
+          <DonatorModal donators={donationCampaign}
+            closeModal={closeModal} />
+        )}
+      </Modal>
     </div>
-    );
+  );
 };
 
 export default MyDonationCampaigns;

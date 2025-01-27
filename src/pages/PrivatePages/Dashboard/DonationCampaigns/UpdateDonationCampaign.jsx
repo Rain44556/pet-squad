@@ -38,7 +38,8 @@ const UpdateDonationCampaign = () => {
                 "last date": data.lastDate,
                 "short description": data.shortDescription,
                 "long description": data.longDescription,
-                campaignOwnerEmail: user.email
+                campaignOwnerEmail: user.email,
+                donorName: user.name,
             }
 
             const updateDonationRes = await axiosSecure.put(`/donationCampaign/${_id}`, updateDonationData);

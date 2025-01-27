@@ -39,8 +39,7 @@ const PetDetails = () => {
             </div>
             <button
                 onClick={handleAdopt}
-                className=" px-4 py-2 mt-4 rounded-md border"
-            >
+                className=" px-4 py-2 mt-4 rounded-md border">
                 Adopt
             </button>
 
