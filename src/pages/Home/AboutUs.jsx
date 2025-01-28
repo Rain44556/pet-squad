@@ -7,8 +7,8 @@ import SectionTitle from '@/components/SectionTitle/SectionTitle';
 const AboutUs = () => {
 
       return (
-        <section className="bg-gradient-to-r from-purple-100 to-blue-200 py-16 px-6 text-center">
-          <div className="container mx-auto max-w-5xl">
+        <div className="mb-10 bg-gradient-to-r from-purple-100 to-blue-200 py-16 px-6 text-center">
+          <div className="mx-auto max-w-5xl">
             <motion.h2
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ const AboutUs = () => {
               transition={{ duration: 0.7, delay: 0.4 }}
             />
           </div>
-        </section>
+        </div>
       );
     };
 

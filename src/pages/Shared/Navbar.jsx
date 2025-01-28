@@ -5,7 +5,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import useAdmin from '@/hooks/useAdmin';
-import { AuthContext } from '@/provider/AuthProvider';
+import {AuthContext} from '@/provider/AuthProvider';
 import { MenuIcon } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
@@ -97,17 +97,14 @@ const Navbar = () => {
                             {/* Login/Logout */}
                             {user && user?.email ?
                                 (
-                                    <ul>
-                                        {
-                                            user && admin && <li><NavLink className="px-4" to="/dashboard/admin">Dashboard</NavLink></li>
-                                        }
-                                        {
-                                            user && !admin && <li><NavLink className="px-4" to="/dashboard/user">Dashboard</NavLink></li>
-                                        }
-                                        <li>
-                                            <NavLink className='px-4' onClick={handleLogout}>Logout</NavLink>
-                                        </li>
-                                    </ul>)
+                                <ul>
+                                    <li>
+                                    <NavLink className='px-4' to="/dashboard">Dashboard</NavLink>
+                                    </li>
+                                    <li>
+                                    <NavLink className='px-4' onClick={handleLogout}>Logout</NavLink>
+                                    </li>
+                                </ul>)
                                 :
                                 <NavLink className="px-4" to="/login">Login</NavLink>
                             }

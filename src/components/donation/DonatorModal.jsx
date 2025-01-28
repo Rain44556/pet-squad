@@ -11,7 +11,8 @@ const DonatorModal = ({donators, closeModal}) => {
          </div>
          <div className='border-b-2 border-colorSecondary mb-3'></div>
           <ul className="space-y-2">
-            {donators.map((donator, index) => (
+            {donators.length === 0 ? "no donation" :
+            donators.map((donator, index) => (
               <li key={index} className="flex justify-between items-center text-colorPrimary">
                 <span>{donator.donorName}</span>
                 <span className="font-medium">{donator.amount} BDT</span>

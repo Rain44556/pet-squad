@@ -3,6 +3,8 @@ import PetsCategory from "./PetsCategory";
 import { Helmet } from "react-helmet-async";
 import CallToAction from "./CallToAction";
 import AboutUs from "./AboutUs";
+import WhyAdoptPet from "./WhyAdoptPet";
+import Testimonials from "./Testimonials";
 
 const Home = () => {
     return (
@@ -14,6 +16,8 @@ const Home = () => {
             <PetsCategory></PetsCategory>
             <CallToAction></CallToAction>
             <AboutUs></AboutUs>
+          <WhyAdoptPet></WhyAdoptPet>
+          <Testimonials></Testimonials>
         </div>
     );
 };

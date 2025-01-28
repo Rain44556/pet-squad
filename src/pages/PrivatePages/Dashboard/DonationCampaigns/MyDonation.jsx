@@ -5,6 +5,7 @@ import { AuthContext } from '@/provider/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
 import { RiRefund2Line } from "react-icons/ri";
+import Swal from 'sweetalert2';
 
 const MyDonation = () => {
       // const [myDonation, setMyDonation] = useState([]);
@@ -34,8 +35,19 @@ const MyDonation = () => {
       //   }
       // }, [user?.email]);
 
-    const handleRefund = () =>{
-
+    const handleRefund =async (id) =>{
+      const res = await axiosSecure.delete(`/myDonation/refund/${id}`);
+      // console.log(res);
+       if (res.data.deletedCount > 0) {
+                // refetch();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Refunded Your Money",
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+              }
     }
 
 
@@ -68,7 +80,7 @@ const MyDonation = () => {
                     <TableCell><img className='w-16 rounded-3xl' src={donation.image}></img></TableCell>                    
                     <TableCell>{donation.name}</TableCell>
                     <TableCell>{donation.donatedAmount}</TableCell>
-                    {/* <TableCell><button onClick={()=>handleRefund(donation)}><RiRefund2Line className='text-colorPrimary' size={23} /></button></TableCell> */}
+                    <TableCell><button onClick={()=>handleRefund(donation._id)}><RiRefund2Line className='text-colorPrimary' size={23} /></button></TableCell>
                   </TableRow>
                 )))
               }

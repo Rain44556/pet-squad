@@ -17,7 +17,7 @@ const Dashboard = () => {
                 <div className='w-72 min-h-full bg-colorPrimary p-10 text-yellow-50'>
                     <ul>
                         {
-                            // user ? 
+                            admin && 
                               <>
                                <li>
                                  <NavLink to="/dashboard/admin" className="font-headingFont font-extrabold">Admin Dashboard</NavLink>
@@ -34,8 +34,10 @@ const Dashboard = () => {
 
                              <div className="border-b my-3"></div>
                            
-                             {/* </> : */}
-                             {/* <> */}
+                             </> 
+                         
+                        }
+                            <>
                             <li>
                                 <NavLink to="/dashboard/user" className="font-headingFont font-extrabold">User Dashboard</NavLink>
                             </li>
@@ -58,7 +60,6 @@ const Dashboard = () => {
                              <li>
                                  <NavLink to="/dashboard/myDonations" className="font-headingFont font-extrabold">My Donations</NavLink>
                              </li> </>
-                        }
                         
                       {/* {user?.role === "admin" && 
                        <li>

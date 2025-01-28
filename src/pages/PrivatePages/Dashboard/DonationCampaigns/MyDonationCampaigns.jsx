@@ -2,7 +2,7 @@ import DonatorModal from '@/components/donation/DonatorModal';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import useAxiosSecure from '@/hooks/useAxiosSecure';
 import useDonation from '@/hooks/useDonation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -26,6 +26,7 @@ const MyDonationCampaigns = () => {
   const [donationCampaign, , refetch] = useDonation();
   const axiosSecure = useAxiosSecure();
   const [donatorsModalIsOpen, setDonatorsModalIsOpen] = useState(false);
+  const [donation, setDonation] = useState([]);
 
   const handlePause = async (id, isPaused) => {
     const pauseStatus = { isPaused };
@@ -44,13 +45,23 @@ const MyDonationCampaigns = () => {
     }
   }
 
-  const handleViewDonators = () => {
-    setDonatorsModalIsOpen(true);
+
+
+  const handleViewDonators = async (id) => {
+    const res = await axiosSecure.get(`/donationCampaign/${id}`)
+    setDonation(res.data);
+   openModal();
   }
 
   const closeModal = () => {
     setDonatorsModalIsOpen(false);
   }
+
+  const openModal = () => {
+    setDonatorsModalIsOpen(true);
+  }
+
+
 
   return (
     <div className='my-10 text-center'>
@@ -89,7 +100,7 @@ const MyDonationCampaigns = () => {
                 </Link>
 
                 <button
-                  onClick={handleViewDonators}
+                  onClick={()=>handleViewDonators(campaign._id)}
                   className='px-3 py-1 border-2 hover:bg-green-500 hover:text-white border-green-500 rounded hover:rounded-lg'>
                   View Donators
                 </button>
@@ -106,6 +117,7 @@ const MyDonationCampaigns = () => {
         contentLabel="Example Modal">
         {donatorsModalIsOpen && (
           <DonatorModal donators={donationCampaign}
+          
             closeModal={closeModal} />
         )}
       </Modal>
