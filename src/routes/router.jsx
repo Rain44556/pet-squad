@@ -20,6 +20,11 @@ import UpdateDonationCampaign from "@/pages/PrivatePages/Dashboard/DonationCampa
 import MyDonation from "@/pages/PrivatePages/Dashboard/DonationCampaigns/MyDonation";
 import DonationCampaigns from "@/pages/DonationCampaigns/DonationCampaigns";
 import DonationDetails from "@/pages/DonationDetails/DonationDetails";
+import UserDashboard from "@/pages/PrivatePages/Dashboard/UserDashboard/UserDashboard";
+import AdminDashboard from "@/pages/PrivatePages/Dashboard/AdminDashboard/AdminDashboard";
+import AllUsers from "@/pages/PrivatePages/Dashboard/AdminDashboard/AllUsers";
+import AllPets from "@/pages/PrivatePages/Dashboard/AdminDashboard/AllPets";
+import AllDonations from "@/pages/PrivatePages/Dashboard/AdminDashboard/AllDonations";
 
 
 
@@ -68,6 +73,10 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
+        path: 'user',
+        element:<UserDashboard></UserDashboard>
+      },
+      {
         path: 'addPet',
         element: <AddPets></AddPets>
       },
@@ -100,6 +109,22 @@ export const router = createBrowserRouter([
       {
         path: 'myDonations',
         element: <MyDonation></MyDonation>
+      },
+      {
+        path: 'admin',
+        element:<AdminDashboard></AdminDashboard>
+      },
+      {
+        path: 'allUsers',
+        element:<AllUsers></AllUsers>
+      },
+      {
+        path: 'allPets',
+        element:<AllPets></AllPets>
+      },
+      {
+        path: 'allDonations',
+        element:<AllDonations></AllDonations>
       },
     ]
   },
