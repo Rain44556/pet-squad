@@ -28,7 +28,7 @@ const DonationCampaignCards = ({ campaign }) => {
 
                 <ul className=" mb-4">
                     <li className="py-1 border-b-2 mb-2 border-colorSecondary">
-                        <span className="font-medium ">Max Donation:</span>
+                        <span className="font-medium ">Contribution Limit:</span>
                         {campaign.maxDonation} BDT
                     </li>
                     <li className="py-1 border-b-2 border-colorSecondary">

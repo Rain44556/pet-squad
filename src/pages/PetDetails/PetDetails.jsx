@@ -20,7 +20,7 @@ const customStyles = {
 
 const PetDetails = () => {
     const petsData = useLoaderData();
-    const { name, image, shortDescription } = petsData;
+    const { name, image, "short description": shortDescription, "long description": longDescription, "last date": lastDate  } = petsData;
     const [modalIsOpen, setIsOpen] = useState(false);
 
     const handleAdopt = () => {
