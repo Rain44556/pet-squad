@@ -13,6 +13,7 @@ const AllUsers = () => {
             return res.data;
         }
     })
+
     //make admin 
     const handleMakeAdmin = user =>{
         axiosSecure.patch(`/users/admin/${user._id}`)
@@ -31,11 +32,9 @@ const AllUsers = () => {
         })
     }
 
-
-
     return (
          <Table>
-                 <TableCaption>A list of Your Selected Pets.</TableCaption>
+                 <TableCaption>A list of All Users.</TableCaption>
                  <TableHeader>
                    <TableRow>
                      <TableHead className="w-[100px]"></TableHead>
