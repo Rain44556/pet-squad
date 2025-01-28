@@ -51,7 +51,7 @@ const AllUsers = () => {
                          <TableCell className="font-medium">{idx + 1}</TableCell>
                          <TableCell>{user.name}</TableCell>
                          <TableCell>{user.email}</TableCell>
-                         <TableCell><img className='w-16 rounded-3xl' src={user.image}></img></TableCell>
+                         <TableCell><img className='w-16 rounded-3xl' src={user.photo}></img></TableCell>
                          <TableCell>{ user.role === 'admin' ? 'Admin' : <button
                                         onClick={() => handleMakeAdmin(user)}
                                         className=" bg-colorPrimary px-4 py-2 rounded-sm text-white">

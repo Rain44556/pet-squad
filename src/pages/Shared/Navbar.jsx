@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import {AuthContext} from '@/provider/AuthProvider';
+import useAdmin from '@/hooks/useAdmin';
+import { AuthContext } from '@/provider/AuthProvider';
 import { MenuIcon } from 'lucide-react';
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
@@ -13,12 +14,14 @@ import { toast } from 'react-toastify';
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const { user, logoutUser } = useContext(AuthContext);
+    const [admin] = useAdmin()
 
 
     const navMenuLinks = <>
         <NavLink className="px-4" to="/">Home</NavLink>
         <NavLink className="px-4" to="/petListing">Pet Listing</NavLink>
         <NavLink className="px-4" to="/donationCampaigns">Donation Campaigns</NavLink>
+
     </>
 
     const handleLogout = () => {
@@ -94,14 +97,17 @@ const Navbar = () => {
                             {/* Login/Logout */}
                             {user && user?.email ?
                                 (
-                                <ul>
-                                    <li>
-                                    <NavLink className='px-4' to="/dashboard">Dashboard</NavLink>
-                                    </li>
-                                    <li>
-                                    <NavLink className='px-4' onClick={handleLogout}>Logout</NavLink>
-                                    </li>
-                                </ul>)
+                                    <ul>
+                                        {
+                                            user && admin && <li><NavLink className="px-4" to="/dashboard/admin">Dashboard</NavLink></li>
+                                        }
+                                        {
+                                            user && !admin && <li><NavLink className="px-4" to="/dashboard/user">Dashboard</NavLink></li>
+                                        }
+                                        <li>
+                                            <NavLink className='px-4' onClick={handleLogout}>Logout</NavLink>
+                                        </li>
+                                    </ul>)
                                 :
                                 <NavLink className="px-4" to="/login">Login</NavLink>
                             }
