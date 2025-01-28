@@ -25,6 +25,8 @@ import AdminDashboard from "@/pages/PrivatePages/Dashboard/AdminDashboard/AdminD
 import AllUsers from "@/pages/PrivatePages/Dashboard/AdminDashboard/AllUsers";
 import AllPets from "@/pages/PrivatePages/Dashboard/AdminDashboard/AllPets";
 import AllDonations from "@/pages/PrivatePages/Dashboard/AdminDashboard/AllDonations";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -70,7 +72,7 @@ export const router = createBrowserRouter([
   {
     path: 'dashboard',
     // element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
         path: 'user',
@@ -110,21 +112,23 @@ export const router = createBrowserRouter([
         path: 'myDonations',
         element: <MyDonation></MyDonation>
       },
+
+      //admin routes
       {
         path: 'admin',
-        element:<AdminDashboard></AdminDashboard>
+        element:<AdminRoute><AdminDashboard></AdminDashboard></AdminRoute>
       },
       {
         path: 'allUsers',
-        element:<AllUsers></AllUsers>
+        element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
       },
       {
         path: 'allPets',
-        element:<AllPets></AllPets>
+        element:<AdminRoute><AllPets></AllPets></AdminRoute>
       },
       {
         path: 'allDonations',
-        element:<AllDonations></AllDonations>
+        element:<AdminRoute><AllDonations></AllDonations></AdminRoute>
       },
     ]
   },

@@ -5,10 +5,10 @@ const UserDashboard = () => {
     const {user} = useContext(AuthContext);
     return (
         <div>
-        <h2 className="text-3xl">
-            <span>Welcome</span>
+        <h2 className="text-3xl text-center text-colorSecondary">
+            <span>Welcome </span>
             {
-                user?.displayName ? user.displayName : 'Back'
+                user?.displayName ? user.displayName : 'User not found'
             }
         </h2>
     </div>
