@@ -7,24 +7,23 @@ import { AuthContext } from '@/provider/AuthProvider';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useState } from 'react';
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ donation }) => {
 
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState('');
     const [transactionId, setTransactionId] = useState('');
     const axiosSecure = useAxiosSecure();
-    const {user} = useContext(AuthContext);
-   
+    const { user } = useContext(AuthContext);
 
-    const handleSubmit = async(e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const amount = e.target.amount.value;
 
         const res = await axiosSecure.post("/create-payment-intent", { amount });
         const clientSecret = res.data.clientSecret;
-        
+
         if (!stripe || !elements) {
             return
         }
@@ -61,13 +60,25 @@ const CheckoutForm = () => {
             console.log('error')
         }
         else {
-            console.log('payment intent', paymentIntent);
+            // console.log('payment intent', paymentIntent);
             if (paymentIntent.status === 'succeeded') {
                 // console.log('transactionId', paymentIntent.id);
-                setTransactionId(paymentIntent.id);
+                setTransactionId(paymentIntent.id)
+
+                // payment save in db
+                const donationData = {
+                    image: donation.image,
+                    name: donation.petName,
+                    donatedAmount: amount,
+                    transactionId: paymentIntent.id,
+                    donorEmail: user.email,
+                }
+                const res = await axiosSecure.post('/myDonation', donationData);
+                // console.log(res.data);
+            }
         }
     }
-}
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -99,16 +110,16 @@ const CheckoutForm = () => {
                     className="mt-1 font-bodyFont"
                     required
                 />
-                 <button 
-                 className=" font-bodyFont bg-colorPrimary my-4 px-4 py-2 rounded text-colorSecondary" 
-                 type="submit"
+                <button
+                    className=" font-bodyFont bg-colorPrimary my-4 px-4 py-2 rounded text-colorSecondary"
+                    type="submit"
                 // disabled={!stripe}
-                  >
+                >
                     Donate
-            </button>
-            <p className="text-sm font-bodyFont text-red-600">{error}</p>
-            {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
-                </form>
+                </button>
+                <p className="text-sm font-bodyFont text-red-600">{error}</p>
+                {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
+            </form>
         </div>
     );
 };

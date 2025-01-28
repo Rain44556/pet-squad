@@ -35,7 +35,7 @@ const CreateDonation = () => {
                 "long description": data.longDescription,
                 "date and time": new Date(res.data.data.time * 1000).toLocaleString(),
                 campaignOwnerEmail: user.email,
-                donorName: user.displayName,
+                campaignOwnerName: user.displayName,
             }
 
             const donation = await axiosSecure.post('/donationCampaign', donationData);
