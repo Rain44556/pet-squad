@@ -42,22 +42,22 @@ export const router = createBrowserRouter([
       {
         path: '/petListing',
         element: <NotAdoptedPetListing></NotAdoptedPetListing>,
-        loader: () => fetch('http://localhost:5000/pets/isNotAdopted')
+        loader: () => fetch('https://pet-squad-server.vercel.app/pets/isNotAdopted')
       },
       {
         path: '/petDetails/:id',
         element: <PetDetails></PetDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/pets/${params.id}`)
+        loader: ({params}) => fetch(`https://pet-squad-server.vercel.app/pets/${params.id}`)
       },
       {
         path: '/donationCampaigns',
         element: <DonationCampaigns></DonationCampaigns>,
-        loader: () => fetch('http://localhost:5000/donationCampaign')
+        loader: () => fetch('https://pet-squad-server.vercel.app/donationCampaign')
       },
       {
         path: '/donationDetails/:id',
         element: <DonationDetails></DonationDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/donationCampaign/${params.id}`)
+        loader: ({params}) => fetch(`https://pet-squad-server.vercel.app/donationCampaign/${params.id}`)
       },
       {
         path: '/login',
@@ -89,7 +89,7 @@ export const router = createBrowserRouter([
       {
         path: 'updatePet/:id',
         element: <UpdatePet></UpdatePet>,
-        loader: ({params}) => fetch(`http://localhost:5000/pets/${params.id}`)
+        loader: ({params}) => fetch(`https://pet-squad-server.vercel.app/pets/${params.id}`)
       },
       {
         path: 'adoptionRequest',
@@ -106,7 +106,7 @@ export const router = createBrowserRouter([
       {
         path: 'updateDonationCampaign/:id',
         element: <UpdateDonationCampaign></UpdateDonationCampaign>,
-        loader: ({params}) => fetch(`http://localhost:5000/donationCampaign/${params.id}`)
+        loader: ({params}) => fetch(`https://pet-squad-server.vercel.app/donationCampaign/${params.id}`)
       },
       {
         path: 'myDonations',

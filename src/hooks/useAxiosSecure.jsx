@@ -8,7 +8,7 @@ import useAuth from "./useAuth";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://pet-squad-server.vercel.app'
 })
 const useAxiosSecure = () => {
     
