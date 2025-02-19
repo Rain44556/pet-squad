@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { FaRegComments, FaRegCalendarAlt, FaUser } from "react-icons/fa";
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import { motion } from "framer-motion";
+import { FaArrowRight } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
     const blogPosts = [{
@@ -26,7 +28,7 @@ const Blog = () => {
         <motion.div 
         transition={{ duration: 0.5 }}
         whileHover={{ scale: 1.1 }}
-        className="max-w-5xl mx-auto p-6 mb-10">
+        className="max-w-6xl mx-auto p-6 mb-10">
         <SectionTitle title={"Blogs & News"} subTitle={"Tips and Advice"}></SectionTitle>
         <motion.div
         className="grid md:grid-cols-2 gap-6">
@@ -49,9 +51,9 @@ const Blog = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-colorPrimary">{post.title}</h3>
                 <p className="text-gray-400 mt-2">{post.description}</p>
-                <a href="#" className="text-colorSecondary font-semibold mt-4 block">
-                  Read More →
-                </a>
+                <Link to="#" className="text-colorPrimary underline flex gap-3 font-semibold mt-4 block">
+                  Read More <FaArrowRight className='mt-1'></FaArrowRight>
+                </Link>
               </CardContent>
             </motion.Card>
           ))}

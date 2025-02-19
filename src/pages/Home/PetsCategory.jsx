@@ -63,7 +63,7 @@ const petData = [
 
 const PetsCategory = () => {
   return (
-    <div className="p-8">
+    <div className="lg:px-20 px-4">
       <SectionTitle
         subTitle={"Category"}
         title={"Find Out Which Furry Friend Fits You Best!"}
@@ -73,10 +73,10 @@ const PetsCategory = () => {
         modules={[Navigation, Pagination]}
         navigation
         pagination={{ clickable: true }}
-        spaceBetween={20}
-        slidesPerView={4}
+        spaceBetween={10}
+        slidesPerView={1}
         breakpoints={{
-          640: { slidesPerView: 2 },
+          640: { slidesPerView: 2,},
           768: { slidesPerView: 3 },
           1024: { slidesPerView: 4 },
         }}

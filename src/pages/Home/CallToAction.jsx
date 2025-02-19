@@ -29,8 +29,8 @@ const CallToAction = () => {
 
     ]
     return (
-        <div className=" mb-10 px-4 text-center">
-            <div className="mx-auto max-w-5xl">
+        <div className=" my-10 px-4 text-center">
+            <div className="mx-auto max-w-6xl">
                 <SectionTitle
                     title={"Change a Life Today, Adopt a Friend for Life"}
                     subTitle={"Every pet deserves a loving home. By adopting, you not only give a pet a second chance but also gain a loyal companion who will bring joy to your life."}
@@ -41,7 +41,7 @@ const CallToAction = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
                 >
-                 <Link to="/petListing">   <Button className="font-headingFont text-md px-10 py-6 font-extrabold bg-colorPrimary rounded-2xl shadow-lg">
+                 <Link to="/petListing">   <Button className=" text-md px-10 py-6 bg-colorPrimary rounded-2xl shadow-lg">
                         Start Your Journey
                     </Button></Link>
                 </motion.div>

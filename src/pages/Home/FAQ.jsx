@@ -2,6 +2,7 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import { motion } from "framer-motion";
 import React, { useState } from 'react';
 import { Accordion, AccordionItem } from "@/components/ui/accordion";
+import { FaArrowTurnUp } from "react-icons/fa6";
 
 const FAQ = () => {
   const faqs = [
@@ -21,7 +22,7 @@ const FAQ = () => {
         "Yes, a home check ensures that the environment is safe and suitable for the pet. This step helps us match the right pet with the right home.",
     },
     {
-      question: "Can I return a pet if it doesn’t work out?",
+      question: "Can I return a pet if it doesn't work out?",
       answer:
         "Yes, we offer a return policy within a specified time frame. We always prioritize the pet’s well-being and will assist in rehoming if needed.",
     },
@@ -79,7 +80,7 @@ const FAQ = () => {
         whileHover={{ scale: 1.1 }}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
-        ⬆
+        <FaArrowTurnUp></FaArrowTurnUp>
       </motion.button>
     </div>
 </div>

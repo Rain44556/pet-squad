@@ -9,7 +9,7 @@ import { FaArrowRight, FaDog, FaHeart, FaHome, FaPaw, FaStethoscope } from 'reac
 const AboutUs = () => {
 
   return (
-    <div>
+    <div className='lg:px-20 px-4'>
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -21,7 +21,7 @@ const AboutUs = () => {
         />
       </motion.h2>
 
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid lg:grid-cols-2 gap-10">
         <div className="py-20 flex flex-col justify-center">
 
         <motion.div 
@@ -65,7 +65,7 @@ const AboutUs = () => {
           >
             <Link
               href="/about"
-              className=" text-colorSecondary rounded-full flex items-center space-x-2 transition duration-300"
+              className=" text-colorPrimary underline font-semibold rounded-full flex items-center space-x-2 transition duration-300"
             >
               <span>Read More</span>
               <FaArrowRight />
