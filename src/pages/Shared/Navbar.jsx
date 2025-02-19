@@ -35,7 +35,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='w-full sticky top-0 z-50 backdrop-blur-md shadow-md bg-colorPrimary text-white'>
+        <div className='w-full sticky top-0 z-50 backdrop-blur-md shadow-sm opacity-90 bg-colorPrimary text-white'>
             <div className='flex gap-10 items-center lg:px-24 px-8 justify-between'>
 
 
