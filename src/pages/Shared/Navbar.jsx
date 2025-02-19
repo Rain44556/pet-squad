@@ -35,7 +35,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='w-full border-b mt-4'>
+        <div className='w-full sticky top-0 z-50 backdrop-blur-md shadow-md bg-colorPrimary text-white'>
             <div className='flex gap-10 items-center lg:px-24 px-8 justify-between'>
 
 
@@ -43,7 +43,7 @@ const Navbar = () => {
                     <img
                         src="https://i.ibb.co.com/WFjYQYS/Untitled-design.png"
                         alt="logo"
-                        className='w-24 h-24 rounded-full mb-2' />
+                        className='w-20 h-20 p-1 rounded-full mb-2' />
                 </div>
 
                 <NavigationMenu className="hidden md:flex">
@@ -78,13 +78,13 @@ const Navbar = () => {
                 </NavigationMenu>
 
 
-                <div className='nav-end pt-3 text-[#827397] font-extrabold'>
+                <div className='nav-end text-[#FFD76A] pt-3 font-extrabold'>
                     <ModeToggle></ModeToggle>
 
                     {/* for mobile responsive */}
-                    <Sheet open={open} onOpenChange={setOpen}>
+                    <Sheet className="pl-4" open={open} onOpenChange={setOpen}>
                         <SheetTrigger asChild>
-                            <Button variant="ghost" size="icon" className="md:hidden">
+                            <Button variant="ghost" size="icon" className="md:hidden ml-1">
                                 <MenuIcon />
                             </Button>
                         </SheetTrigger>

@@ -55,7 +55,7 @@ const Registration = () => {
                     photo,
                     role: "user"
                 };
-                fetch('https://pet-squad-server.vercel.app/users', {
+                fetch('http://localhost:5000/users', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'

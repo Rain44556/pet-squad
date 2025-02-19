@@ -2,7 +2,8 @@ import axios from "axios";
 
 
 const axiosPublic = axios.create({
-    baseURL: 'https://pet-squad-server.vercel.app'
+    baseURL: 'http://localhost:5000'
+    //https://pet-squad-server.vercel.app
 })
 
 const useAxiosPublic = () => {
